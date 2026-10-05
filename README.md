@@ -2,8 +2,8 @@
 
 A Claude Code skill that teaches hard topics so they stay understood, not memorized.
 It works on Claude Code with no extra tools. You say "teach me X". Claude finds the edge of
-what you know, draws a map of the topic, teaches one node at a time, and saves a graph of
-what you now understand. Next session, it picks up where you stopped.
+what you know and draws a map of the topic. It teaches one node at a time. Then it saves
+a graph of what you now understand. Next session, it picks up where you stopped.
 
 ## Credits
 
@@ -53,8 +53,8 @@ answer sets a floor. A wrong answer sets a ceiling. The edge sits between them. 
 answer is right, the questions were too easy, and Claude asks harder ones. If one answer
 is wrong, Claude asks around it to see if it was a slip or a real gap.
 
-Every sixth question, Claude shows what it has found so far and asks: keep probing, or go
-to the map? You decide.
+There is no question limit. The probe ends when every strand is bracketed. Say "map" at
+any time to stop early.
 
 ### Step 3. Lay safe footholds
 
@@ -71,8 +71,9 @@ enough. Each one is checked before anything is built on it.
 
 ### Step 4. Draw the map before teaching
 
-Claude drafts a small dependency map. The footholds sit at the roots. Your goal sits at
-the bottom. Each node in between hangs off the nodes it depends on. Claude checks that
+Claude drafts a small dependency map of at most 7 nodes. The footholds sit at the roots.
+Your goal sits at the bottom. Each node in between hangs off the nodes it depends on. The
+map is drawn as a picture in your browser, and shown as an indented list in chat. Claude checks that
 each root is a real root and not a result that itself needs explaining. Then it shows
 you the map and waits. A wrong root is cheap to fix now and expensive mid lesson.
 
@@ -119,8 +120,8 @@ system keeps those neighbours.
 
 1. You say "teach me how git rebase works".
 2. One picker: Full lesson, Quick (footholds and one derivation), or Resume.
-3. Probe. Graded questions until the edge is found, with a check in every 6 questions.
-4. Map. Shown in chat. You approve it.
+3. Probe. Graded questions until the edge is found. Each answer is graded on the next question.
+4. Map. Drawn as a picture, listed in chat. You approve it.
 5. Teach. One node at a time. Foothold, Edge, Your turn, Click.
 6. Test. Derive something untold.
 7. Save. The graph is written with marks.

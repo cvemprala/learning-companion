@@ -48,21 +48,35 @@ If no file exists, say "No graph found for this topic" and offer Full or Quick.
 
 ## Probe
 
+Every probe is one AskUserQuestion with this exact shape. Fill it in. Do not change the shape.
+
+```
+header:   Probe 5
+question: Probe 4: wrong. Answer: bob. Why: the inner function keeps name alive after make returns.
+
+          Probe 5: <the new question>
+options:  2 to 4 claims. No "I don't know" option. The learner can type that.
+```
+
+Line 1 of the question field is always the grade of the previous probe. `Probe 4: right.` when right.
+`Probe 4: wrong. Answer: X. Why: one sentence.` when wrong. Probe 1 is the only probe with no grade line.
+A typed answer is graded the same way as a picked one.
+Before sending, read the question field. If it does not start with `Probe N-1:`, you skipped the grade. Add it.
+
 Goal: find the edge of what the learner knows, one **strand** at a time, where a strand is one line of prior knowledge.
 The edge is found when it is bracketed: one right answer (the **floor**) and one wrong answer (the **ceiling**) next to each other.
 
 - All right means too easy. Jump difficulty up sharply.
-- One wrong is not done. Ask around it to tell a slip from a gap.
+- One wrong is not done. Ask around it to tell a slip from a gap. The grade line still comes first.
 - Before Probe 1, read the graph file if one exists. Skip any strand it marks Strong, and keep its marks when writing.
-
-Each question is one AskUserQuestion with 2 to 4 options. Label it "Probe N", starting at Probe 1.
-Grade in the next reply: right or wrong, the correct answer, one sentence why.
 
 Quiz construction. Write the correct claim first. Mutate it into each wrong option by one real misconception.
 No reasoning inside any option. No bold in only one option.
 If the answer is visible without knowing the topic, rewrite the set.
 
-At Probe 6, 12, 18: show what was found and the open strands. Then one picker: Continue probing / Go to the map.
+Probe until every strand is bracketed, then go to the map. There is no question limit.
+If the learner says "map" at any time, stop probing and go to the map.
+When the probe ends, give the last grade in chat before the map.
 
 ## Facts
 
@@ -71,8 +85,12 @@ Use the Agent tool with `subagent_type: learning-companion:researcher`, one clai
 
 ## Map
 
-Draft a dependency map as a mermaid block. Roots, the nodes at the top with no parent, are footholds.
-The sink, the one node at the bottom, is the learner's goal. Few nodes, short labels.
+Draft a dependency map of at most 7 nodes with labels of 5 words or fewer. Roots, the nodes at the top with no parent, are footholds.
+The sink, the one node at the bottom, is the learner's goal.
+
+Show the map two ways. First, publish a picture. Mermaid is a text format that a renderer draws as boxes and arrows. Write one small HTML page holding one mermaid block.
+Use the Artifact tool and follow its own rules. Give the learner the link. Second, in chat, show the same map as an indented list: roots at the left edge, each child indented under its parent.
+If the Artifact tool is not available, show only the list.
 
 Stress test each root. If a root itself derives from something simpler the learner would accept, push it down and add the simpler node above it.
 
@@ -130,6 +148,7 @@ Feedback is factual. No praise, no hype, no belittling. Say what was right, what
 | Learner answers before you teach | Record it as known. Skip the explanation, not the next step. |
 | Learner says "skip" or "just tell me" | Teach the step directly. Try first resumes on the next step. |
 | Every probe answer is right | The floor is set and no ceiling. Jump difficulty up sharply. |
+| Learner says "map" during the probe | Stop probing. Give the last grade. Build the map. |
 | Session restarted with Pending open | Ask the Pending question again. Do not assume an answer. |
 
 ## Common mistakes
@@ -139,6 +158,8 @@ Feedback is factual. No praise, no hype, no belittling. Say what was right, what
 - Telling, then quizzing. The learner must try before being told.
 - Teaching before the map is approved. A wrong root is cheap to fix now and expensive mid lesson.
 - Stopping the probe at the first wrong answer. One miss is a point, not an edge.
+- Asking the next probe without the grade line for the last one. The learner never hears why they were wrong.
+- Showing the map only as a raw mermaid block. The terminal cannot draw it, so the learner sees code, not a map.
 - Writing quiz options where the right one is longer or carries its reason.
 - Adding extra material the learner did not ask for. Flags, habits, comparisons. That is going past the edge.
 - Starting with exceptions and nuance before the solid base exists.
