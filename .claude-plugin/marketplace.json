@@ -1,0 +1,14 @@
+{
+  "name": "learning-companion",
+  "owner": { "name": "Chaitanya Vemprala" },
+  "metadata": {
+    "description": "Learning Companion: teaches hard topics so they stay understood, not memorized."
+  },
+  "plugins": [
+    {
+      "name": "learning-companion",
+      "source": "./",
+      "description": "Teaches a hard topic one node at a time and saves a graph of what you understand."
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "learning-companion",
+  "version": "0.1.0",
+  "description": "Teaches a hard topic one node at a time and saves a graph of what you understand.",
+  "author": {
+    "name": "Chaitanya Vemprala"
+  },
+  "keywords": [
+    "learning",
+    "teaching",
+    "understanding",
+    "knowledge-graph"
+  ],
+  "license": "MIT"
+}

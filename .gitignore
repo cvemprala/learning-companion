@@ -1,0 +1,14 @@
+# macOS
+.DS_Store
+
+# Local learning notes created while using the skill. Never commit a learner's graph.
+.learning/
+learning-notes/
+
+# Test transcripts and scratch output
+tests/transcripts/
+*.log
+
+# Editors
+.vscode/
+.idea/
