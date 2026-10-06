@@ -70,7 +70,7 @@ What you type, and what happens.
 | `teach me <topic>` | Starts a lesson. Also triggers on "help me understand" and "I want to learn". |
 | `/learning-companion:learn <topic>` | Same as above, by command. |
 | `resume <topic>` | Skips the picker and continues the saved topic from its weakest node. |
-| `/learning-companion:reset` | Moves one topic's notes, or all topics in the repo, into a backups folder after you confirm. Nothing is deleted. |
+| `/learning-companion:reset` | Moves one topic's notes and its lesson logs, or all topics in the repo, into a backups folder after you confirm. Nothing is deleted. |
 
 Words that work inside a lesson.
 
