@@ -66,6 +66,11 @@ Before sending, read the question field. If it does not start with `Probe N-1:`,
 Goal: find the edge of what the learner knows, one **strand** at a time, where a strand is one line of prior knowledge.
 The edge is found when it is bracketed: one right answer (the **floor**) and one wrong answer (the **ceiling**) next to each other.
 
+Start at the roots, not at the goal. Before Probe 1, draft the 2 to 4 roots the topic rests on. Keep the draft private.
+Probe 1 tests the deepest root. Right: jump to the goal. Wrong: that is the edge, and Probe 2 moves one step up to confirm it.
+Example: Go middleware rests on closures, so Probe 1 is a closure question, not an http.Handler question.
+A miss at the goal says little. Every node above a missing root fails for the same reason.
+
 - All right means too easy. Jump difficulty up sharply.
 - One wrong is not done. Ask around it to tell a slip from a gap. The grade line still comes first.
 - Before Probe 1, read the graph file if one exists. Skip any strand it marks Strong, and keep its marks when writing.
@@ -91,6 +96,7 @@ The sink, the one node at the bottom, is the learner's goal.
 Show the map two ways. First, publish a picture. Mermaid is a text format that a renderer draws as boxes and arrows. Write one small HTML page holding one mermaid block.
 Use the Artifact tool and follow its own rules. Give the learner the link. Second, in chat, show the same map as an indented list: roots at the left edge, each child indented under its parent.
 If the Artifact tool is not available, show only the list.
+The picture is the main view. Save its link in the graph file header as `Map:`. On Resume, republish to that same link with the current marks, so the map stays in one place.
 
 Stress test each root. If a root itself derives from something simpler the learner would accept, push it down and add the simpler node above it.
 
@@ -149,6 +155,7 @@ Feedback is factual. No praise, no hype, no belittling. Say what was right, what
 | Learner says "skip" or "just tell me" | Teach the step directly. Try first resumes on the next step. |
 | Every probe answer is right | The floor is set and no ceiling. Jump difficulty up sharply. |
 | Learner says "map" during the probe | Stop probing. Give the last grade. Build the map. |
+| Choosing Probe 1 | Test the deepest root of the topic. Never the goal. |
 | Session restarted with Pending open | Ask the Pending question again. Do not assume an answer. |
 
 ## Common mistakes
@@ -158,6 +165,7 @@ Feedback is factual. No praise, no hype, no belittling. Say what was right, what
 - Telling, then quizzing. The learner must try before being told.
 - Teaching before the map is approved. A wrong root is cheap to fix now and expensive mid lesson.
 - Stopping the probe at the first wrong answer. One miss is a point, not an edge.
+- Starting the probe at the goal. Three misses in a row that all come from one missing root is six questions spent finding one fact.
 - Asking the next probe without the grade line for the last one. The learner never hears why they were wrong.
 - Showing the map only as a raw mermaid block. The terminal cannot draw it, so the learner sees code, not a map.
 - Writing quiz options where the right one is longer or carries its reason.

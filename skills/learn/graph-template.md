@@ -15,6 +15,7 @@ File: the topic, lowercase, hyphens. Example: `~/.learning/web-api/git-rebase.md
 Repo: <folder name or general>
 Started: YYYY-MM-DD
 Last session: YYYY-MM-DD
+Map: <artifact link, or none>
 
 ## <node name>
 Produced by: <parent node or "root">
