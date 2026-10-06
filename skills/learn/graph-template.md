@@ -21,7 +21,7 @@ Map: <artifact link, or none>
 Produced by: <parent node or "root">
 Facts: <1 to 3 short facts>
 Mark: Strong | Developing | Revisit | Not yet asked (YYYY-MM-DD)
-Probe: <N>, right or wrong, said <learner's answer>, answer <correct answer>
+Probe: <N>, right or wrong, said <learner's answer or idk>, answer <correct answer>
 Picture: <artifact link, only if one was drawn for this node>
 Edge to rebuild: <the reason to re-derive this node>
 

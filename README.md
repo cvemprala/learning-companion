@@ -35,6 +35,14 @@ Run these two commands in Claude Code, one at a time.
 
 Restart Claude Code. Then say "teach me how git rebase works" or any topic you want.
 
+One setting to change first. Claude Code shows grey predicted text in the input box, called
+prompt suggestions. During a lesson that text is often the answer. Turn it off in `/config`
+under **Prompt suggestions**, or add this to `~/.claude/settings.json`:
+
+```json
+{ "promptSuggestionEnabled": false }
+```
+
 To try it from a local clone without installing:
 
 ```sh
@@ -69,6 +77,8 @@ Words that work inside a lesson.
 | You say | What happens |
 |---|---|
 | `map` | Stops the probe early and goes to the map. |
+| `idk`, or the last picker option | Marks the probe as a gap, shows the answer, and moves on. |
+| a question, during a probe | Gets a short answer, then the same probe again. |
 | `skip` or `just tell me` | Claude teaches the current step directly instead of asking you to try. |
 | `Resume`, in the first picker | Continues a saved topic from its weakest node. When every node is Strong, it offers Extend, Retest, or Stop. |
 | `use dark pictures` or `use light pictures` | Sets the theme for the map and other pictures. Light is the default. |

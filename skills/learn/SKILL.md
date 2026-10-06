@@ -64,12 +64,15 @@ header:   Probe 5
 question: Probe 4: wrong. Answer: bob. Why: the inner function keeps name alive after make returns.
 
           Probe 5: <the new question>
-options:  2 to 4 claims. No "I don't know" option. The learner can type that.
+options:  2 or 3 claims, then one last option: I don't know
 ```
 
 Line 1 of the question field is always the grade of the previous probe. `Probe 4: right.` when right.
 `Probe 4: wrong. Answer: X. Why: one sentence.` when wrong. Probe 1 is the only probe with no grade line.
 A typed answer is graded the same way as a picked one.
+"I don't know", picked or typed as idk, is graded as wrong and the answer is shown. The Probe line records "said idk".
+Teach treats an idk node as a gap to fill, and a wrong claim as a wrong model to undo.
+A typed question during a probe gets a 1 or 2 sentence answer, then the same probe again. No grade for that turn.
 Before sending, read the question field. If it does not start with `Probe N-1:`, you skipped the grade. Add it.
 
 Goal: find the edge of what the learner knows, one **strand** at a time, where a strand is one line of prior knowledge.
