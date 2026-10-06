@@ -93,7 +93,7 @@ Use the Agent tool with `subagent_type: learning-companion:researcher`, one clai
 Draft a dependency map of at most 7 nodes with labels of 5 words or fewer. Roots, the nodes at the top with no parent, are footholds.
 The sink, the one node at the bottom, is the learner's goal.
 
-Show the map two ways. First, publish a picture. Mermaid is a text format that a renderer draws as boxes and arrows. Write one small HTML page holding one mermaid block.
+Show the map two ways. First, publish a picture. Mermaid is a text format that a renderer draws as boxes and arrows. Write one small HTML page holding one mermaid block, using the page shape and theme in `pictures.md` next to this file.
 Use the Artifact tool and follow its own rules. Give the learner the link. Second, in chat, show the same map as an indented list: roots at the left edge, each child indented under its parent.
 If the Artifact tool is not available, show only the list.
 The picture is the main view. Save its link in the graph file header as `Map:`. On Resume, republish to that same link with the current marks, so the map stays in one place.
@@ -121,6 +121,12 @@ Escape hatch: "skip" or "just tell me" teaches the step directly. Try first resu
 Compression check. After 3 to 5 new facts, stop. Ask which single idea produces them all.
 The **click** is the moment a pile of facts collapses into one or two producing ideas.
 If no idea holds the pile yet, keep going until one does.
+
+## Pictures
+
+Beyond the map, draw at most 2 pictures per lesson, and only when the idea is a shape words carry badly.
+The rules, the theme setting, and the page shape are in `pictures.md` next to this file. Read it before drawing.
+Light is the default. "Use dark pictures" switches it and is saved in `settings.md` at the notes root.
 
 ## Test
 

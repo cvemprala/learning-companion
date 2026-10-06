@@ -60,6 +60,7 @@ Words that work inside a lesson.
 | `map` | Stops the probe early and goes to the map. |
 | `skip` or `just tell me` | Claude teaches the current step directly instead of asking you to try. |
 | `Resume`, in the first picker | Continues a saved topic from its weakest node. |
+| `use dark pictures` or `use light pictures` | Sets the theme for the map and other pictures. Light is the default. |
 
 ## What a session looks like
 
@@ -180,6 +181,7 @@ In progress. The skill text and graph template are being built step by step with
 .claude-plugin/plugin.json      plugin manifest
 skills/learn/SKILL.md           the teaching process
 skills/learn/graph-template.md  the saved graph format
+skills/learn/pictures.md        when and how to draw, with the theme setting
 skills/reset/SKILL.md           back up one topic and start over
 agents/researcher.md            fact checker subagent
 ```
