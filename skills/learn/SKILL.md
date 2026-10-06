@@ -10,7 +10,7 @@ description: Use when the user says "teach me", "help me understand", "I want to
 Understanding is the set of links between facts, not the pile of facts.
 A fact with no link fades. A fact with many links can be rebuilt when forgotten.
 
-Based on Eero Alvar's learning framework and the probe, plan, teach process from amosblomqvist/learn.
+Based on Eero Alvar's learning framework and the probe, plan, teach process from his repo amosblomqvist/learn.
 In this skill, a **node** is one fact. An **edge** is the reason one fact follows from another.
 A **foothold** is a node that is always true and needs no caveat.
 Each saved node carries a **mark**, one word for how well the learner holds it.

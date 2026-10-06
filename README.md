@@ -7,15 +7,51 @@ a graph of what you now understand. Next session, it picks up where you stopped.
 
 ## Credits
 
-This project is motivated and inspired explicitly by
-[amosblomqvist/learn](https://github.com/amosblomqvist/learn), a learning system built
-for the pi coding agent. It encodes the same framework and adds a three phase process:
-probe, plan, teach. Learning Companion rebuilds that process for Claude Code in its own
-words, and adds a saved knowledge graph so the system remembers what you understand.
+Everything here starts with Eero Alvar. His video
+[How I Learn Difficult Things](https://www.youtube.com/watch?v=ciC6ffUqI8k) gives the
+framework: understanding is the links between facts, not the pile. His repo
+[amosblomqvist/learn](https://github.com/amosblomqvist/learn), shown in his second video
+[How I Use AI to Learn Things](https://www.youtube.com/watch?v=kzcI5F4tGiU), turns that
+framework into a three phase process for the pi coding agent: probe, plan, teach.
 
-The framework itself comes from Eero Alvar. Watch his video
-[How I Learn Difficult Things](https://www.youtube.com/watch?v=ciC6ffUqI8k). Everything
-below is my reading of his ideas, written as steps I can follow.
+Learning Companion is motivated and inspired explicitly by that repo. It rebuilds the
+process for Claude Code in its own words, and adds a saved knowledge graph so the system
+remembers what you understand. Everything below is my reading of his ideas, written as
+steps I can follow.
+
+## Install
+
+You need [Claude Code](https://code.claude.com/docs/en/setup). No other tools.
+
+Run these two commands in Claude Code, one at a time.
+
+```text
+/plugin marketplace add cvemprala/learning-companion
+```
+
+```text
+/plugin install learning-companion@learning-companion
+```
+
+Restart Claude Code. Then say "teach me how git rebase works" or any topic you want.
+
+To try it from a local clone without installing:
+
+```sh
+claude --plugin-dir /path/to/learning-companion
+```
+
+Your saved graphs go in `~/.learning/` by default. Set `LEARNING_NOTES_ROOT` to change it.
+
+## What a session looks like
+
+1. You say "teach me how git rebase works".
+2. One picker: Full lesson, Quick (footholds and one derivation), or Resume.
+3. Probe. Graded questions until the edge is found. Each answer is graded on the next question.
+4. Map. Drawn as a picture, listed in chat. You approve it.
+5. Teach. One node at a time. Foothold, Edge, Your turn, Click.
+6. Test. Derive something untold.
+7. Save. The graph is written with marks.
 
 ## The idea in one example
 
@@ -116,40 +152,6 @@ nodes, and starts at the weakest one. A memorized fact has one hold on memory. A
 with many edges can be rebuilt from its neighbours when forgotten. The graph is how the
 system keeps those neighbours.
 
-## What a session looks like
-
-1. You say "teach me how git rebase works".
-2. One picker: Full lesson, Quick (footholds and one derivation), or Resume.
-3. Probe. Graded questions until the edge is found. Each answer is graded on the next question.
-4. Map. Drawn as a picture, listed in chat. You approve it.
-5. Teach. One node at a time. Foothold, Edge, Your turn, Click.
-6. Test. Derive something untold.
-7. Save. The graph is written with marks.
-
-## Install
-
-You need [Claude Code](https://code.claude.com/docs/en/setup). No other tools.
-
-Run these two commands in Claude Code, one at a time.
-
-```text
-/plugin marketplace add cvemprala/learning-companion
-```
-
-```text
-/plugin install learning-companion@learning-companion
-```
-
-Restart Claude Code. Then say "teach me how git rebase works" or any topic you want.
-
-To try it from a local clone without installing:
-
-```sh
-claude --plugin-dir /path/to/learning-companion
-```
-
-Your saved graphs go in `~/.learning/` by default. Set `LEARNING_NOTES_ROOT` to change it.
-
 ## Status
 
 In progress. The skill text and graph template are being built step by step with tests.
@@ -166,5 +168,5 @@ agents/researcher.md            fact checker subagent
 ## License
 
 [MIT](LICENSE). Anyone can use, copy, change, and share this work, including for
-commercial use. Keep the license notice with copies. The ideas come from Eero Alvar and
-amosblomqvist/learn, as credited above. The words and files here are my own.
+commercial use. Keep the license notice with copies. The ideas come from Eero Alvar, as
+credited above. The words and files here are my own.
