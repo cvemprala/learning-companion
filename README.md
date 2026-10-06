@@ -50,6 +50,9 @@ Every lesson is also written as one markdown file under `~/.learning/<repo>/log/
 mermaid maps render inside Obsidian. The file is rewritten at the end of every reply, so
 it is always complete. To turn this off, add `Mirror: off` to `~/.learning/settings.md`.
 
+If a long lesson gets compacted, which is when Claude Code shortens a long chat, the open
+question is asked again. Opening Claude Code in a folder never starts a lesson on its own.
+
 ## Commands
 
 What you type, and what happens.
@@ -58,6 +61,7 @@ What you type, and what happens.
 |---|---|
 | `teach me <topic>` | Starts a lesson. Also triggers on "help me understand" and "I want to learn". |
 | `/learning-companion:learn <topic>` | Same as above, by command. |
+| `resume <topic>` | Skips the picker and continues the saved topic from its weakest node. |
 | `/learning-companion:reset` | Moves one topic's notes, or all topics in the repo, into a backups folder after you confirm. Nothing is deleted. |
 
 Words that work inside a lesson.
@@ -192,6 +196,7 @@ skills/learn/graph-template.md  the saved graph format
 skills/learn/pictures.md        when and how to draw, with the theme setting
 skills/reset/SKILL.md           back up one topic and start over
 agents/researcher.md            fact checker subagent
+hooks/session_start.py          asks an open question again after a compaction
 hooks/mirror.py                 writes each lesson to a markdown log for Obsidian
 tests/                          hook tests, run with python3 -m unittest discover -s tests
 ```

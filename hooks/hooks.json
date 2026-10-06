@@ -1,6 +1,18 @@
 {
-  "description": "Mirror each lesson into a markdown log under the notes root, so Obsidian can open it.",
+  "description": "On compaction, ask the open lesson question again. On every reply, mirror the lesson to a markdown log for Obsidian.",
   "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/hooks/session_start.py\"",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
     "Stop": [
       {
         "hooks": [

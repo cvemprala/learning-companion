@@ -1,6 +1,6 @@
 ---
 name: learn
-description: Use when the user says "teach me", "help me understand", "I want to learn", or "why does this work". Also use when they say a topic feels like a pile of rules or facts that will not stick. Not for a one line lookup such as "what flag does X take".
+description: Use when the user says "teach me", "help me understand", "I want to learn", "resume <topic>", or "why does this work". Also use when they say a topic feels like a pile of rules or facts that will not stick. Not for a one line lookup such as "what flag does X take".
 ---
 
 # Learn
@@ -43,6 +43,7 @@ So "teach me how closures in Go work" matches a file headed `# closures in go`. 
 
 Then ask one AskUserQuestion with 3 options. Then stop. The next phase starts on the turn after the pick.
 When a file was found, say so in the question text and name its weakest mark, so the learner can pick Resume with reason.
+If the learner said "resume <topic>" and a file exists, skip the picker and go straight to Resume.
 
 - Full lesson: probe, map, teach, test, save. If a file exists, Full adds to it. It does not start a second file.
 - Quick: 3 footholds and one derivation. No probe, no graph write.
