@@ -43,6 +43,24 @@ claude --plugin-dir /path/to/learning-companion
 
 Your saved graphs go in `~/.learning/` by default. Set `LEARNING_NOTES_ROOT` to change it.
 
+## Commands
+
+What you type, and what happens.
+
+| You type | What happens |
+|---|---|
+| `teach me <topic>` | Starts a lesson. Also triggers on "help me understand" and "I want to learn". |
+| `/learning-companion:learn <topic>` | Same as above, by command. |
+| `/learning-companion:reset` | Moves one topic's notes into a backups folder after you confirm. Nothing is deleted. |
+
+Words that work inside a lesson.
+
+| You say | What happens |
+|---|---|
+| `map` | Stops the probe early and goes to the map. |
+| `skip` or `just tell me` | Claude teaches the current step directly instead of asking you to try. |
+| `Resume`, in the first picker | Continues a saved topic from its weakest node. |
+
 ## What a session looks like
 
 1. You say "teach me how git rebase works".
@@ -162,6 +180,7 @@ In progress. The skill text and graph template are being built step by step with
 .claude-plugin/plugin.json      plugin manifest
 skills/learn/SKILL.md           the teaching process
 skills/learn/graph-template.md  the saved graph format
+skills/reset/SKILL.md           back up one topic and start over
 agents/researcher.md            fact checker subagent
 ```
 
