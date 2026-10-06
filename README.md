@@ -58,7 +58,7 @@ What you type, and what happens.
 |---|---|
 | `teach me <topic>` | Starts a lesson. Also triggers on "help me understand" and "I want to learn". |
 | `/learning-companion:learn <topic>` | Same as above, by command. |
-| `/learning-companion:reset` | Moves one topic's notes into a backups folder after you confirm. Nothing is deleted. |
+| `/learning-companion:reset` | Moves one topic's notes, or all topics in the repo, into a backups folder after you confirm. Nothing is deleted. |
 
 Words that work inside a lesson.
 
@@ -66,7 +66,7 @@ Words that work inside a lesson.
 |---|---|
 | `map` | Stops the probe early and goes to the map. |
 | `skip` or `just tell me` | Claude teaches the current step directly instead of asking you to try. |
-| `Resume`, in the first picker | Continues a saved topic from its weakest node. |
+| `Resume`, in the first picker | Continues a saved topic from its weakest node. When every node is Strong, it offers Extend, Retest, or Stop. |
 | `use dark pictures` or `use light pictures` | Sets the theme for the map and other pictures. Light is the default. |
 | `Mirror: off` in `settings.md` | Stops writing lesson logs for Obsidian. On by default. |
 

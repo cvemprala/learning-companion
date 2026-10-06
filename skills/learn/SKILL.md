@@ -37,14 +37,22 @@ Teach for Student B.
 
 ## Start
 
-On trigger, ask one AskUserQuestion with 3 options. Then stop. The next phase starts on the turn after the pick.
+Before the picker, find the topic's file. Look in the repo folder under the notes root.
+Match by the `# <topic>` heading first, then by file name. Compare in lowercase, ignoring punctuation and the words "how", "in", "the", "work", "works".
+So "teach me how closures in Go work" matches a file headed `# closures in go`. One topic, one file. Never create a second file for a heading that already exists.
 
-- Full lesson: probe, map, teach, test, save.
+Then ask one AskUserQuestion with 3 options. Then stop. The next phase starts on the turn after the pick.
+When a file was found, say so in the question text and name its weakest mark, so the learner can pick Resume with reason.
+
+- Full lesson: probe, map, teach, test, save. If a file exists, Full adds to it. It does not start a second file.
 - Quick: 3 footholds and one derivation. No probe, no graph write.
 - Resume: read the graph file for this topic. Skip nodes marked Strong. Start at the weakest node: Revisit first, then Developing, then Not yet asked.
 
 On Resume, if the file has a `## Pending` section, which records an open question, ask that question again.
 If no file exists, say "No graph found for this topic" and offer Full or Quick.
+
+If every node is Strong, say so and ask one AskUserQuestion with 3 options.
+Extend: draft 2 to 4 harder nodes above the goal, probe them, and teach the gaps. Retest: ask the learner to derive 2 nodes again, and mark Revisit any they cannot. Stop: say the topic is complete and end.
 
 ## Probe
 

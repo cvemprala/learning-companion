@@ -21,19 +21,22 @@ If the folder has no topic files, say "No learning notes for this repo" and stop
 
 If the user named a topic, match it to one file by its `# <topic>` heading or its file name.
 If the match is unclear or no topic was named, ask one AskUserQuestion with the topic names as options.
-With more than 4 topics, list them in chat and ask the user to type one.
+When the folder has 2 or more topics, add one more option: **All topics in <repo>**.
+With more than 3 topics, list them in chat and ask the user to type one, or "all".
 
 ## Show, then confirm
 
 Before asking, show in chat:
 
-- The file path.
-- The topic's node count and how many are Strong.
-- Where the backup will go: `<repo folder>/backups/<file name>-<YYYY-MM-DD-HHMM>.md`.
-- One line: the map picture on claude.ai is not deleted. Only the local link to it goes.
+- The file path, or for all topics, the folder path and the list of files.
+- The node count and how many are Strong, per file.
+- Where the backup will go: `<repo folder>/backups/<file name>-<YYYY-MM-DD-HHMM>.md`. All topics share one stamp.
+- One line: the map pictures on claude.ai are not deleted. Only the local links go.
+- One line: the lesson logs in `log/` stay.
 
 Then one AskUserQuestion, header `Reset`, two options: **Cancel** (keep the notes) and **Reset topic** (back up and start over).
-Invoking the command is not a confirmation. Silence is not a confirmation. Only **Reset topic** is.
+For all topics the second option is **Reset all N topics**, with N the count.
+Invoking the command is not a confirmation. Silence is not a confirmation. Only the reset option is.
 
 ## Do it
 
@@ -43,14 +46,14 @@ On Reset topic:
 
 1. `mkdir -p` the backups folder.
 2. If the backup name already exists, add seconds to the stamp. Never overwrite a backup.
-3. `mv` the topic file to the backup path.
-4. Show the backup path. Say "Say teach me <topic> to start over".
+3. `mv` the topic file to the backup path. For all topics, move each file in turn with the shared stamp.
+4. Show the backup paths. Say "Say teach me <topic> to start over".
 
 If the move fails, show the error. Do not say it was reset. Do not try another file.
 
 ## Never
 
 - Never delete. Only move into `backups/`.
-- Never touch another topic, another repo folder, or `backups/`.
+- Never touch another repo folder, `backups/`, or `log/`. One topic means one file. All topics means the topic files in this folder only.
 - Never edit the file before moving it.
 - Never run without the picker answer **Reset topic**.
