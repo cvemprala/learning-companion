@@ -63,12 +63,15 @@ Edge to rebuild: The parent ID is an input to the hash, so a new parent means a 
 
 ## Settings file
 
-`<root>/settings.md` holds settings that apply to every topic. Today there is one.
+`<root>/settings.md` holds settings that apply to every topic. Today there are two.
 
 ```
 # Learning Companion settings
 Theme: light
+Mirror: on
 ```
+
+Mirror writes each lesson to `<repo>/log/` as markdown for Obsidian. Off stops that.
 
 Missing file means light. Only write it when the learner changes a setting.
 

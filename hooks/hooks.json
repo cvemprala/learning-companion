@@ -1,0 +1,16 @@
+{
+  "description": "Mirror each lesson into a markdown log under the notes root, so Obsidian can open it.",
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/hooks/mirror.py\"",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}

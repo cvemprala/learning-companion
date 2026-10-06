@@ -43,6 +43,13 @@ claude --plugin-dir /path/to/learning-companion
 
 Your saved graphs go in `~/.learning/` by default. Set `LEARNING_NOTES_ROOT` to change it.
 
+## Read your lessons in Obsidian
+
+Every lesson is also written as one markdown file under `~/.learning/<repo>/log/`. Open
+`~/.learning` as a vault in Obsidian and the lessons, graphs, and maps are all there. The
+mermaid maps render inside Obsidian. The file is rewritten at the end of every reply, so
+it is always complete. To turn this off, add `Mirror: off` to `~/.learning/settings.md`.
+
 ## Commands
 
 What you type, and what happens.
@@ -61,6 +68,7 @@ Words that work inside a lesson.
 | `skip` or `just tell me` | Claude teaches the current step directly instead of asking you to try. |
 | `Resume`, in the first picker | Continues a saved topic from its weakest node. |
 | `use dark pictures` or `use light pictures` | Sets the theme for the map and other pictures. Light is the default. |
+| `Mirror: off` in `settings.md` | Stops writing lesson logs for Obsidian. On by default. |
 
 ## What a session looks like
 
@@ -184,6 +192,8 @@ skills/learn/graph-template.md  the saved graph format
 skills/learn/pictures.md        when and how to draw, with the theme setting
 skills/reset/SKILL.md           back up one topic and start over
 agents/researcher.md            fact checker subagent
+hooks/mirror.py                 writes each lesson to a markdown log for Obsidian
+tests/                          hook tests, run with python3 -m unittest discover -s tests
 ```
 
 ## License
