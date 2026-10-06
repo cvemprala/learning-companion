@@ -19,6 +19,10 @@ def text(t):
     return {"type": "text", "text": t}
 
 
+def skill_call(args, call_id="s9"):
+    return row("assistant", [{"type": "tool_use", "id": call_id, "name": "Skill", "input": {"skill": "learning-companion:learn", "args": args}}])
+
+
 def lesson_rows(with_skill=True):
     rows = [row("user", [text("teach me git rebase")])]
     if with_skill:
@@ -85,6 +89,29 @@ class MirrorTest(unittest.TestCase):
         self.assertNotIn("Base directory", body)
         self.assertNotIn("Stop hook feedback", body)
         self.assertIn("### You\n\nyes go", body)
+
+    def test_mark_this_is_not_a_lesson(self):
+        self.write_transcript([row("user", [text("mark this")]), skill_call("mark this"), row("assistant", [text("## sites/handlers\nMark: Seen")])])
+        self.run_hook()
+        self.assertEqual(self.logs(), [])
+
+    def test_teach_as_we_go_is_not_a_lesson(self):
+        self.write_transcript([row("user", [text("teach as we go")]), skill_call("Teach as we go"), row("assistant", [text("On.")])])
+        self.run_hook()
+        self.assertEqual(self.logs(), [])
+
+    def test_stop_teaching_is_not_a_lesson(self):
+        self.write_transcript([row("user", [text("stop teaching as we go")]), skill_call("stop teaching as we go"), row("assistant", [text("Off.")])])
+        self.run_hook()
+        self.assertEqual(self.logs(), [])
+
+    def test_lesson_plus_mark_is_mirrored(self):
+        rows = lesson_rows() + [row("user", [text("mark this")]), skill_call("mark this: parseOrgHeader")]
+        self.write_transcript(rows)
+        self.run_hook()
+        files = self.logs()
+        self.assertEqual(len(files), 1)
+        self.assertEqual(files[0].name, "2026-10-05-git-rebase-abcdef12.md")
 
     def test_mirror_off_means_no_file(self):
         self.root.mkdir(parents=True)

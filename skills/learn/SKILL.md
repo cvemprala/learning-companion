@@ -1,6 +1,6 @@
 ---
 name: learn
-description: Use when the user says "teach me", "help me understand", "I want to learn", "resume <topic>", or "why does this work". Also use when they say a topic feels like a pile of rules or facts that will not stick. Not for a one line lookup such as "what flag does X take".
+description: Use when the user says "teach me", "help me understand", "I want to learn", "resume <topic>", or "why does this work". Also "teach as we go", "stop teaching as we go", "mark this", "teach me what I marked", or "teach me the codebase". Also use when they say a topic feels like a pile of rules or facts that will not stick. Not for a one line lookup such as "what flag does X take".
 ---
 
 # Learn
@@ -36,6 +36,13 @@ Two students both know `F = ma`, `v = u + at`, and `s = ut + at²/2`.
 Teach for Student B.
 
 ## Start
+
+Five phrases are about work, not a lesson. They route here through the description above. Handle them first, with no picker.
+
+- "teach as we go": write `Mode: teach as we go` to `<root>/<repo>/settings.md`, shape in `graph-template.md`. Say it is on. Then Read `teach-as-we-go.md` next to this file and follow it for the rest of this session.
+- "stop teaching as we go": remove that line. Say it is off. Stop asking Predict questions now.
+- "mark this": write one Seen node to `<root>/<repo>/codebase.md` as `teach-as-we-go.md` says. Show it. Stop.
+- "teach me the codebase" or "teach me what I marked this week": the topic file is `codebase.md`. With "this week", keep nodes whose `Date` is in the last 7 days. Otherwise keep nodes not Strong. The probe can be short where a `Probe:` line exists. Then map, teach, test, save as below.
 
 Before the picker, find the topic's file. Look in the repo folder under the notes root.
 Match by the `# <topic>` heading first, then by file name. Compare in lowercase, ignoring punctuation and the words "how", "in", "the", "work", "works".

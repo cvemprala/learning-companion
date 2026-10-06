@@ -20,10 +20,12 @@ Map: <artifact link, or none>
 ## <node name>
 Produced by: <parent node or "root">
 Facts: <1 to 3 short facts>
-Mark: Strong | Developing | Revisit | Not yet asked (YYYY-MM-DD)
-Probe: <N>, right or wrong, said <learner's answer or idk>, answer <correct answer>
+Mark: Strong | Developing | Revisit | Not yet asked | Seen (YYYY-MM-DD)
+Probe: <N or Predict>, right or wrong, said <learner's answer or idk>, answer <correct answer>
 Picture: <artifact link, only if one was drawn for this node>
+Seen in: <file:line, only on codebase.md nodes>
 Edge to rebuild: <the reason to re-derive this node>
+Date: <YYYY-MM-DD the node was first written, only on codebase.md nodes>
 
 ## Pending
 Stage: Probe N | Map awaiting approval | Teach: <node name> | Test
@@ -37,7 +39,8 @@ Awaiting answer.
 - Developing: recalled it in a probe, or followed the edge in Teach. Derived nothing new yet.
 - Revisit: missed it in a probe, or could not rebuild it in Teach.
 - Not yet asked: no probe touched it, and it is untaught.
-The `Probe:` line is only on nodes a probe touched. Teach reopens that question when the mark is Revisit.
+- Seen: met during work, through "mark this". Not yet asked. Only in `codebase.md`.
+The `Probe:` line is only on nodes a probe touched. A Predict question during work counts as a probe. Teach reopens that question when the mark is Revisit.
 Date: run `date +%Y-%m-%d`.
 
 ## Pending
@@ -74,6 +77,33 @@ Mirror: on
 Mirror writes each lesson to `<repo>/log/` as markdown for Obsidian. Off stops that.
 
 Missing file means light. Only write it when the learner changes a setting.
+
+## Per repo settings file
+
+`<root>/<repo>/settings.md` holds settings for one repo. Today there is one.
+
+```
+# web-api settings
+Mode: teach as we go
+```
+
+Missing file or missing line means the mode is off. The rules are in `teach-as-we-go.md`.
+
+## The codebase file
+
+`<root>/<repo>/codebase.md` is the topic file for the repo itself, heading `# <repo> codebase`.
+One node per folder. The node heading is the folder path, 2 segments at most, for example `## sites/handlers`.
+Written by a Predict question during work, or by "mark this". Read by "teach me the codebase".
+
+```
+## sites/handlers
+Produced by: root
+Facts: Handlers parse the request and call one repository function.
+Mark: Seen (2026-10-06)
+Seen in: sites/handlers/create_site.go:41
+Edge to rebuild: Validation sits in the handler because the repository never sees headers.
+Date: 2026-10-06
+```
 
 ## Reading it back
 

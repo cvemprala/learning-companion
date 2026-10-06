@@ -1,9 +1,13 @@
-"""Ask the open lesson question again after a compaction.
+"""Ask the open lesson question again after a compaction, and say when
+teach as we go is on for this repo.
 
-Fires only on the compact source. Opening Claude Code in a folder is not a
-promise to learn, so startup, resume, and clear stay silent. Compaction
-happens inside a long chat, so if a lesson has an open question then, the
-learner is mid lesson and the question would be lost without this.
+The pending check fires only on the compact source. Opening Claude Code in a
+folder is not a promise to learn, so startup, resume, and clear stay silent.
+Compaction happens inside a long chat, so if a lesson has an open question
+then, the learner is mid lesson and the question would be lost without this.
+The mode check fires on every source. It reads one line of the per repo
+settings file and nothing else. The learner turned the mode on, so saying so
+at startup keeps that promise.
 Output size does not grow with the notes. Any error ends with exit 0 and
 no output, so a session always continues.
 """
@@ -17,6 +21,7 @@ from pathlib import Path
 
 PLUGIN_ROOT = Path(__file__).resolve().parents[1]
 MAX_TOPICS = 5
+MODE_LINE = re.compile(r"Mode:\s*teach as we go\s*", re.IGNORECASE)
 
 
 def notes_root():
@@ -90,17 +95,43 @@ def context_for(items):
     return "\n".join(lines)
 
 
+def mode_on(folder):
+    path = folder / "settings.md"
+    if path.is_symlink() or not path.is_file():
+        return False
+    try:
+        lines = path.read_text(encoding="utf-8").splitlines()
+    except (OSError, UnicodeError):
+        return False
+    return any(MODE_LINE.fullmatch(line) for line in lines)
+
+
+def mode_context(folder):
+    return "\n".join([
+        "Learning Companion: teach as we go is on for this repo. The learner asked for this.",
+        f"Before you change any code, use Read on {PLUGIN_ROOT / 'skills/learn/teach-as-we-go.md'} and follow it.",
+        f"Graph file: {folder / 'codebase.md'}. A folder is met when that file has a `## <folder>` heading. "
+        "Nothing else counts.",
+        "The one rule: before a change of 5 lines or more in a folder that is not met, ask one Predict question. "
+        "Config, docs, and tests never ask. One question per folder, ever.",
+    ])
+
+
 def run(payload):
     if not isinstance(payload, dict) or payload.get("hook_event_name") != "SessionStart":
         return None
-    if payload.get("source") != "compact":
-        return None
     cwd = payload.get("cwd") or os.getcwd()
     folder = notes_root() / repo_folder(cwd)
-    items = find_pending(folder)
-    if not items:
+    parts = []
+    if payload.get("source") == "compact":
+        items = find_pending(folder)
+        if items:
+            parts.append(context_for(items))
+    if mode_on(folder):
+        parts.append(mode_context(folder))
+    if not parts:
         return None
-    return {"hookSpecificOutput": {"hookEventName": "SessionStart", "additionalContext": context_for(items)}}
+    return {"hookSpecificOutput": {"hookEventName": "SessionStart", "additionalContext": "\n\n".join(parts)}}
 
 
 def main():

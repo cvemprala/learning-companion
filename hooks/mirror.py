@@ -2,6 +2,8 @@
 
 Runs on the Stop event. Reads the session transcript. If the learn skill was
 used in this session, renders the whole lesson to <root>/<repo>/log/<file>.md.
+A skill call for "mark this", "teach as we go", or "stop teaching as we go"
+is work, not a lesson, and does not count.
 Rewrites the file each time, so running twice gives the same result.
 Never blocks the session: any error ends with exit 0 and no output.
 """
@@ -16,6 +18,7 @@ from pathlib import Path
 
 SKILL_NAME = "learning-companion:learn"
 SKIP_USER_PREFIXES = ("Base directory for this skill", "Stop hook feedback:", "[Request interrupted")
+WORK_PHRASES = ("mark this", "teach as we go", "stop teaching as we go")
 
 
 def notes_root():
@@ -34,6 +37,10 @@ def mirror_enabled(root):
     except (OSError, UnicodeError):
         return True
     return True
+
+
+def is_work_call(args):
+    return str(args or "").strip().lower().startswith(WORK_PHRASES)
 
 
 def repo_folder(cwd):
@@ -122,7 +129,7 @@ def render(rows, session_id, repo, transcript_path, last_reply=""):
             elif kind == "tool_use":
                 name = block.get("name")
                 params = block.get("input", {}) or {}
-                if name == "Skill" and params.get("skill") == SKILL_NAME:
+                if name == "Skill" and params.get("skill") == SKILL_NAME and not is_work_call(params.get("args")):
                     skill_used = True
                     if params.get("args"):
                         topic = params["args"]

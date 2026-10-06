@@ -1,9 +1,8 @@
 {
-  "description": "On compaction, ask the open lesson question again. On every reply, mirror the lesson to a markdown log for Obsidian.",
+  "description": "On compaction, ask the open lesson question again. On every session start, say when teach as we go is on for the repo. On every reply, mirror the lesson to a markdown log for Obsidian.",
   "hooks": {
     "SessionStart": [
       {
-        "matcher": "compact",
         "hooks": [
           {
             "type": "command",

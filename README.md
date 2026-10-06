@@ -61,6 +61,27 @@ it is always complete. To turn this off, add `Mirror: off` to `~/.learning/setti
 If a long lesson gets compacted, which is when Claude Code shortens a long chat, the open
 question is asked again. Opening Claude Code in a folder never starts a lesson on its own.
 
+## Learn while you work
+
+Claude Code has a Learning output style. At design decisions it asks you to write 5 to 10
+lines of code yourself. It has two gaps. It asks for business logic in a system you do not
+understand yet. And it has no memory and no later test. It does not replace the Learning
+output style. The rule: use the Learning style to build, use this to understand what you
+touch and to keep it.
+
+Say "teach as we go" in a repo to turn it on for that repo. Before Claude changes 5 or more
+lines in a folder you have not met, it asks one Predict question. A Predict question is a
+guess about code you have not read yet, with 2 or 3 claims and "I don't know". Claude
+grades it, writes one node for that folder to `~/.learning/<repo>/codebase.md`, and does
+the work. One question per folder, ever. Changes to config, docs, or tests never ask. Say
+"just do it" to skip one question. Say "stop teaching as we go" to turn it off.
+
+"Mark this" works in any repo, mode on or off. It writes one node for the code Claude just
+explained, with the mark Seen, and asks nothing. Later, "teach me the codebase" or "teach
+me what I marked this week" runs a normal lesson on those nodes.
+
+Work sessions are not logged for Obsidian. The node is the record.
+
 ## Commands
 
 What you type, and what happens.
@@ -71,6 +92,11 @@ What you type, and what happens.
 | `/learning-companion:learn <topic>` | Same as above, by command. |
 | `resume <topic>` | Skips the picker and continues the saved topic from its weakest node. |
 | `/learning-companion:reset` | Moves one topic's notes and its lesson logs, or all topics in the repo, into a backups folder after you confirm. Nothing is deleted. |
+| `teach as we go` | Turns on one Predict question per new folder before Claude changes code there, for this repo. |
+| `stop teaching as we go` | Turns that off for this repo. |
+| `mark this` | Saves one node for the code Claude just explained. No question. Works in any repo. |
+| `teach me what I marked this week` | Runs a lesson on the codebase nodes from the last 7 days. |
+| `teach me the codebase` | Runs a lesson on every codebase node that is not Strong. |
 
 Words that work inside a lesson.
 
@@ -204,9 +230,10 @@ In progress. The skill text and graph template are being built step by step with
 skills/learn/SKILL.md           the teaching process
 skills/learn/graph-template.md  the saved graph format
 skills/learn/pictures.md        when and how to draw, with the theme setting
+skills/learn/teach-as-we-go.md  one Predict question per folder during work, and mark this
 skills/reset/SKILL.md           back up one topic and start over
 agents/researcher.md            fact checker subagent
-hooks/session_start.py          asks an open question again after a compaction
+hooks/session_start.py          asks an open question again after a compaction, says when teach as we go is on
 hooks/mirror.py                 writes each lesson to a markdown log for Obsidian
 tests/                          hook tests, run with python3 -m unittest discover -s tests
 ```

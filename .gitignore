@@ -12,3 +12,6 @@ tests/transcripts/
 # Editors
 .vscode/
 .idea/
+
+# Python
+__pycache__/

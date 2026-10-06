@@ -13,7 +13,7 @@ Runs only when the user invokes it. Nothing moves before the user confirms in a 
 
 Root folder: `LEARNING_NOTES_ROOT`, default `~/.learning/`.
 Repo folder: the name of the git root folder, or `general` when there is no repo.
-Topic files: every `*.md` in that folder, not in `backups/` or `log/`.
+Topic files: every `*.md` in that folder, not `settings.md`, and not in `backups/` or `log/`.
 Log files: every `*.md` in `log/` whose `topic:` line matches the topic heading, compared in lowercase.
 
 If the folder has no topic files, say "No learning notes for this repo" and stop.

@@ -27,6 +27,9 @@ Repo: web-api
 Mark: Strong (2026-10-05)
 """
 
+MODE_ON = "# web-api settings\nMode: teach as we go\n"
+MODE_OFF = "# web-api settings\nTheme: dark\n"
+
 
 class SessionStartTest(unittest.TestCase):
     def setUp(self):
@@ -106,6 +109,51 @@ class SessionStartTest(unittest.TestCase):
         (self.folder / "closures-in-go.md").write_text(PENDING_FILE + ("\n## Node\nFacts: x\n" * 2000))
         small = len(self.context(self.run_hook()))
         self.assertLess(small, 1200)
+
+    def test_mode_on_startup_gives_context(self):
+        (self.folder / "settings.md").write_text(MODE_ON)
+        ctx = self.context(self.run_hook(source="startup"))
+        self.assertIn("teach as we go is on", ctx)
+        self.assertIn("skills/learn/teach-as-we-go.md", ctx)
+        self.assertIn(str(self.folder / "codebase.md"), ctx)
+        self.assertIn("5 lines", ctx)
+        self.assertIn("## <folder>", ctx)
+        self.assertNotIn("compacted", ctx)
+
+    def test_mode_on_every_source(self):
+        (self.folder / "settings.md").write_text(MODE_ON)
+        for source in ("startup", "resume", "clear", "compact", "fork"):
+            self.assertIn("teach as we go is on", self.context(self.run_hook(source=source)), source)
+
+    def test_mode_off_is_silent(self):
+        (self.folder / "settings.md").write_text(MODE_OFF)
+        (self.folder / "closures-in-go.md").write_text(PENDING_FILE)
+        self.assertIsNone(self.run_hook(source="startup"))
+
+    def test_no_settings_is_silent(self):
+        (self.folder / "closures-in-go.md").write_text(PENDING_FILE)
+        self.assertIsNone(self.run_hook(source="startup"))
+
+    def test_compact_with_both_gives_both(self):
+        (self.folder / "settings.md").write_text(MODE_ON)
+        (self.folder / "closures-in-go.md").write_text(PENDING_FILE)
+        ctx = self.context(self.run_hook(source="compact"))
+        self.assertIn("where does the variable n live?", ctx)
+        self.assertIn("teach as we go is on", ctx)
+        self.assertLess(ctx.index("compacted"), ctx.index("teach as we go is on"))
+
+    def test_mode_context_is_constant_size(self):
+        (self.folder / "settings.md").write_text(MODE_ON)
+        small = len(self.context(self.run_hook(source="startup")))
+        (self.folder / "settings.md").write_text(MODE_ON + "Other: x\n" * 3000)
+        (self.folder / "codebase.md").write_text("# web-api codebase\n" + "\n## folder/n\nFacts: x\n" * 4000)
+        self.assertEqual(len(self.context(self.run_hook(source="startup"))), small)
+
+    def test_symlinked_settings_is_ignored(self):
+        real = Path(self.tmp.name) / "settings.md"
+        real.write_text(MODE_ON)
+        (self.folder / "settings.md").symlink_to(real)
+        self.assertIsNone(self.run_hook(source="startup"))
 
     def test_bad_file_is_skipped(self):
         (self.folder / "bad.md").write_bytes(b"\xff\xfe\x00broken")
