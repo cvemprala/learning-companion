@@ -21,6 +21,7 @@ Map: <artifact link, or none>
 Produced by: <parent node or "root">
 Facts: <1 to 3 short facts>
 Mark: Strong | Developing | Revisit | Not yet asked (YYYY-MM-DD)
+Probe: <N>, right or wrong, said <learner's answer>, answer <correct answer>
 Edge to rebuild: <the reason to re-derive this node>
 
 ## Pending
@@ -32,9 +33,10 @@ Awaiting answer.
 ## Marks
 
 - Strong: derived a fact that was never said.
-- Developing: followed the edge, derived nothing new yet.
-- Revisit: could not rebuild the node.
-- Not yet asked: untaught.
+- Developing: recalled it in a probe, or followed the edge in Teach. Derived nothing new yet.
+- Revisit: missed it in a probe, or could not rebuild it in Teach.
+- Not yet asked: no probe touched it, and it is untaught.
+The `Probe:` line is only on nodes a probe touched. Teach reopens that question when the mark is Revisit.
 Date: run `date +%Y-%m-%d`.
 
 ## Pending
@@ -53,7 +55,8 @@ Edge to rebuild: Change any input to a hash and the hash changes.
 ## Copied commit gets a new ID
 Produced by: Commit ID
 Facts: Rebase copies a commit onto a new parent. The copy has a new ID.
-Mark: Developing (2026-10-05)
+Mark: Revisit (2026-10-05)
+Probe: 2, wrong, said it stays the same, answer it changes because the parent ID is part of the hash
 Edge to rebuild: The parent ID is an input to the hash, so a new parent means a new ID.
 ```
 

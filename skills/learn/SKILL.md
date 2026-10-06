@@ -41,7 +41,7 @@ On trigger, ask one AskUserQuestion with 3 options. Then stop. The next phase st
 
 - Full lesson: probe, map, teach, test, save.
 - Quick: 3 footholds and one derivation. No probe, no graph write.
-- Resume: read the graph file for this topic. Skip nodes marked Strong. Start at the weakest node.
+- Resume: read the graph file for this topic. Skip nodes marked Strong. Start at the weakest node: Revisit first, then Developing, then Not yet asked.
 
 On Resume, if the file has a `## Pending` section, which records an open question, ask that question again.
 If no file exists, say "No graph found for this topic" and offer Full or Quick.
@@ -100,7 +100,10 @@ The picture is the main view. Save its link in the graph file header as `Map:`. 
 
 Stress test each root. If a root itself derives from something simpler the learner would accept, push it down and add the simpler node above it.
 
-Write every node to the graph with mark Not yet asked. Then show the map and the approach in 3 to 5 sentences.
+Write every node to the graph. A node a probe touched gets a `Probe:` line and a mark from that probe.
+Right gives Developing. Wrong gives Revisit. A node no probe touched gets Not yet asked.
+The `Probe:` line holds the probe number, right or wrong, what the learner said, and the correct answer.
+Then show the map and the approach in 3 to 5 sentences.
 Wait for the go ahead. Do not teach before approval. If the learner changes the map, rewrite the nodes.
 
 ## Teach
@@ -109,6 +112,7 @@ Per node, in this order: motivate, establish, connect, check.
 
 1. Motivate. One sentence on what problem forces this node now.
 2. Establish. For a foothold, state a strict definition or an all or none statement. Never "usually". For a derived node, ask the learner to try first: how would they get here from the footholds? Wait.
+   If the node has a `Probe:` line marked wrong, reopen that exact question here. Their wrong answer is the gap to close.
 3. Connect. When they answer, grade it. Then state the edge: why this node follows from its parent.
 4. Check. Ask the learner to use the node once.
 
