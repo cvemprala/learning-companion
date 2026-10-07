@@ -10,9 +10,9 @@ a graph of what you now understand. Next session, it picks up where you stopped.
 Everything here starts with Eero Alvar. His video
 [How I Learn Difficult Things](https://www.youtube.com/watch?v=ciC6ffUqI8k) gives the
 framework: understanding is the links between facts, not the pile. His repo
-[amosblomqvist/learn](https://github.com/amosblomqvist/learn), shown in his second video
-[How I Use AI to Learn Things](https://www.youtube.com/watch?v=kzcI5F4tGiU), turns that
-framework into a three phase process for the pi coding agent: probe, plan, teach.
+[amosblomqvist/learn](https://github.com/amosblomqvist/learn) turns that framework into a
+three phase process for the pi coding agent: probe, plan, teach. He shows it in his second
+video, [How I Use AI to Learn Things](https://www.youtube.com/watch?v=kzcI5F4tGiU).
 
 Learning Companion is motivated and inspired explicitly by that repo. It rebuilds the
 process for Claude Code in its own words, and adds a saved knowledge graph so the system
@@ -54,8 +54,9 @@ Your saved graphs go in `~/.learning/` by default. Set `LEARNING_NOTES_ROOT` to 
 ## Read your lessons in Obsidian
 
 Every lesson is also written as one markdown file under `~/.learning/<repo>/log/`. Each
-topic also gets a review sheet, `<topic>.review.md`, one folded question per node with the
-fact, the why, the real example from your lesson, and your mistake under it. Open
+topic also gets a review sheet, `<topic>.review.md`. It holds one folded question per
+node. Under each question sit the fact, the why, the real example from your lesson, and
+your mistake. Open
 `~/.learning` as a vault in Obsidian and the lessons, graphs, maps, and review sheets are
 all there. Review by answering each question before you unfold it. The
 mermaid maps render inside Obsidian. The file is rewritten at the end of every reply, so
@@ -118,11 +119,11 @@ Words that work inside a lesson.
 
 1. You say "teach me how git rebase works".
 2. One picker: Full lesson, Quick (footholds and one derivation), or Resume.
-3. Probe. Graded questions until the edge is found. Each answer is graded on the next question.
+3. Probe. Graded questions, starting from the deepest root, until the edge is found. Each answer is graded on the next question.
 4. Map. Drawn as a picture, listed in chat. You approve it.
 5. Teach. One node at a time. Foothold, Edge, Your turn, Click.
 6. Test. Derive something untold.
-7. Save. The graph is written with marks.
+7. Save. The graph gets its marks, the review sheet is written, and the lesson lands in the Obsidian log.
 
 ## The idea in one example
 
@@ -215,17 +216,25 @@ Claude asks you to derive a fact it never told you, using only the footholds and
 Recalling a fact you were told proves memory. Deriving one you were not told proves
 understanding. Only this test earns a mark in the graph. "Makes sense" earns nothing.
 
-### Step 9. Save the graph
+### Step 9. Save the graph, and a sheet to rebuild from
 
 Each node is saved with a mark: Strong, Developing, or Revisit. The file lives outside any
 git worktree, so it survives cleanup. Next session, Claude reads the graph, skips Strong
-nodes, and starts at the weakest one. A memorized fact has one hold on memory. A fact
+nodes, and starts at the weakest one.
+
+A review sheet is saved next to it. One folded question per node, with the fact, the
+reason, the real example from your lesson, and your mistake under it. You answer the
+question first and unfold second. Reviewing by rereading is memorizing. Reviewing by
+rebuilding is the method. A memorized fact has one hold on memory. A fact
 with many edges can be rebuilt from its neighbours when forgotten. The graph is how the
 system keeps those neighbours.
 
 ## Status
 
-In progress. The skill text and graph template are being built step by step with tests.
+Version 0.1.14. Used daily by one person since 2026-10-05, across 4 live lessons. 32
+hook tests pass. Every skill change is checked with 2 clean subagent runs before it
+ships. Teach as we go is an experiment, shipped as one commit so one revert removes it.
+Feedback welcome. Open an issue with the session that went wrong and what you expected.
 
 ## Repository layout
 
