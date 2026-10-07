@@ -33,6 +33,7 @@ options:  2 or 3 claims, then one last option: I don't know
 Ask what they can work out, not what they must look up.
 Example: where does validation live, handler, middleware, or repository?
 Write the right claim first. Mutate it into each wrong option by one misconception. No reasoning inside any option.
+Then sort the claims by first letter, A to Z. "I don't know" stays last. Sorting picks the slot, not habit.
 
 ## Grade
 

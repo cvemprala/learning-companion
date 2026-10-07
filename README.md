@@ -159,7 +159,7 @@ Words that work inside a lesson.
 
 1. You say "teach me how git rebase works".
 2. One picker: Full lesson, Quick (footholds and one derivation), or Resume.
-3. Probe. Graded questions, starting from the deepest root, until the edge is found. Each answer is graded on the next question.
+3. Probe. Graded questions, starting from the deepest root, until the edge is found. Each answer is graded on the next question. Options are sorted A to Z, so the right one is not always first.
 4. Map. Drawn as a picture, listed in chat. You approve it.
 5. Teach. One node at a time. Foothold, Edge, Your turn, Click.
 6. Test. Derive something untold.
@@ -215,7 +215,8 @@ The fix is to start from facts that cannot be contradicted and need no caveats:
 - An all or none statement. "Every commit has exactly one ID."
 
 Never open with "usually" or a loose list of properties. Two to four footholds are
-enough. Each one is checked before anything is built on it.
+enough. Each one is checked against a source before anything is built on it, and the
+source is saved on the node. A wrong foothold would break every node above it.
 
 ### Step 4. Draw the map before teaching
 

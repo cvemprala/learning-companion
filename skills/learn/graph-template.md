@@ -20,6 +20,7 @@ Map: <artifact link, or none>
 ## <node name>
 Produced by: <parent node or "root">
 Facts: <1 to 3 short facts>
+Source: <link or name the researcher confirmed, or "unconfirmed", or file:line for repo facts. Footholds only>
 Mark: Strong | Developing | Revisit | Not yet asked | Seen (YYYY-MM-DD)
 Probe: <N or Predict>, right or wrong, said <learner's answer or idk>, answer <correct answer>
 Picture: <artifact link, only if one was drawn for this node>
@@ -53,6 +54,7 @@ Written when a question is asked. Removed when answered. A restart or a compacti
 ## Commit ID
 Produced by: root
 Facts: A commit ID is a hash of the content and the parent ID.
+Source: https://git-scm.com/book/en/v2/Git-Internals-Git-Objects
 Mark: Strong (2026-10-05)
 Edge to rebuild: Change any input to a hash and the hash changes.
 

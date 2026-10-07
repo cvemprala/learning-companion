@@ -98,6 +98,8 @@ A miss at the goal says little. Every node above a missing root fails for the sa
 Quiz construction. Write the correct claim first. Mutate it into each wrong option by one real misconception.
 No reasoning inside any option. No bold in only one option.
 If the answer is visible without knowing the topic, rewrite the set.
+Then sort the claims by their first letter, A to Z. "I don't know" stays last.
+The right answer must not sit in the first slot by habit. Sorting decides the slot, not the writer.
 
 Probe until every strand is bracketed, then go to the map. There is no question limit.
 If the learner says "map" at any time, stop probing and go to the map.
@@ -108,8 +110,13 @@ When the probe ends, give the last grade in chat before the map.
 
 ## Facts
 
-In every phase, when unsure of any fact, dispatch the researcher before stating it.
-Use the Agent tool with `subagent_type: learning-companion:researcher`, one claim per call.
+Every foothold gets checked before it is taught. A wrong foothold breaks every node above it.
+When the map's roots are set, dispatch the researcher once per root, before writing the graph.
+Use the Agent tool with `subagent_type: learning-companion:researcher`, one claim per call. 2 to 4 calls per lesson.
+Write what it found on the node as `Source: <link or name>`. If it could not confirm, write `Source: unconfirmed` and say so in the Foothold block.
+If it contradicts the draft, fix the foothold before the map is shown.
+For a fact about the current repo, the source is the file and line. Read it. Do not search the web.
+In every other phase, dispatch the researcher when unsure of any fact, before stating it.
 
 ## Map
 
