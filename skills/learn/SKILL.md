@@ -192,7 +192,8 @@ The Test question is a Your turn block with one sentence before it saying this i
 Feedback is factual. No praise, no hype, no belittling. Say what was right, what was missing, and why.
 
 Write for a person whose first language is not English, with an intermediate grasp of it.
-Short sentences. Common words. No idioms. One idea per sentence.
+Short sentences. Common words. No idioms. One idea per sentence. Every sentence has a verb.
+A sentence lists at most 3 things. A fourth thing starts a new sentence.
 The learner's knowledge is what the probe found. Pitch the content there, not at the language.
 Keep every fact and every term of the topic. Define each term in the sentence it first appears.
 Every claim stands on something concrete: a number, a line of code, a real case.
