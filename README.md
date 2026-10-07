@@ -72,13 +72,6 @@ Your saved graphs go in `~/.learning/` by default. Set `LEARNING_NOTES_ROOT` to 
 | [Tools people already use](docs/prior-work.md) | learn, vibe-wise, the Learning output style, and /teach, and what this one does |
 | [Development](docs/development.md) | Layout, tests, how a skill change is checked, how to ship |
 
-## Status
-
-Version 0.1.14. Used daily by one person since 2026-10-05, across 4 live lessons. 32
-hook tests pass. Every skill change is checked with 2 clean subagent runs before it
-ships. Teach as we go is an experiment, shipped as one commit so one revert removes it.
-Feedback welcome. Open an issue with the session that went wrong and what you expected.
-
 ## License
 
 [MIT](LICENSE). Anyone can use, copy, change, and share this work, including for
