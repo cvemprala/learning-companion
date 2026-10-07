@@ -64,6 +64,32 @@ Probe: 2, wrong, said it stays the same, answer it changes because the parent ID
 Edge to rebuild: The parent ID is an input to the hash, so a new parent means a new ID.
 ```
 
+## Review sheet
+
+`<topic>.review.md`, next to the graph. Written at the end of a lesson and on "review notes for <topic>".
+One block per node in teaching order. The question shows. The answer is folded until the learner opens it.
+Obsidian folds a callout whose title line ends the type with a minus sign, as below.
+
+```
+# <topic>: review
+Graph: <topic>.md
+Map: <artifact link, or none>
+Logs: log/<file>.md
+Updated: YYYY-MM-DD
+Open each question and answer it before you unfold. Rebuilding is the review.
+
+## <node name>
+> [!question]- <one question, answerable from the footholds, not containing the fact>
+> **Fact.** <1 or 2 sentences>
+> **Why.** <the edge, 1 or 2 sentences>
+> **Example.** <the real example from the lesson, with its values, or "No example in the lesson yet">
+> **Your mistake.** <what the learner said and why it was wrong. Only when a Probe line says wrong or idk>
+
+Mark: <mark> (YYYY-MM-DD)
+```
+
+Rules: examples only from the lesson or its log. One block per node, 2 sentences per line at most. Rewrite the whole file each time.
+
 ## Settings file
 
 `<root>/settings.md` holds settings that apply to every topic. Today there are two.

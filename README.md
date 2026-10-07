@@ -53,8 +53,11 @@ Your saved graphs go in `~/.learning/` by default. Set `LEARNING_NOTES_ROOT` to 
 
 ## Read your lessons in Obsidian
 
-Every lesson is also written as one markdown file under `~/.learning/<repo>/log/`. Open
-`~/.learning` as a vault in Obsidian and the lessons, graphs, and maps are all there. The
+Every lesson is also written as one markdown file under `~/.learning/<repo>/log/`. Each
+topic also gets a review sheet, `<topic>.review.md`, one folded question per node with the
+fact, the why, the real example from your lesson, and your mistake under it. Open
+`~/.learning` as a vault in Obsidian and the lessons, graphs, maps, and review sheets are
+all there. Review by answering each question before you unfold it. The
 mermaid maps render inside Obsidian. The file is rewritten at the end of every reply, so
 it is always complete. To turn this off, add `Mirror: off` to `~/.learning/settings.md`.
 
@@ -91,6 +94,7 @@ What you type, and what happens.
 | `teach me <topic>` | Starts a lesson. Also triggers on "help me understand" and "I want to learn". |
 | `/learning-companion:learn <topic>` | Same as above, by command. |
 | `resume <topic>` | Skips the picker and continues the saved topic from its weakest node. |
+| `review notes for <topic>` | Writes or refreshes the topic's review sheet. One folded question per node, answer under it. |
 | `/learning-companion:reset` | Moves one topic's notes and its lesson logs, or all topics in the repo, into a backups folder after you confirm. Nothing is deleted. |
 | `teach as we go` | Turns on one Predict question per new folder before Claude changes code there, for this repo. |
 | `stop teaching as we go` | Turns that off for this repo. |

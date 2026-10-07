@@ -13,7 +13,8 @@ Runs only when the user invokes it. Nothing moves before the user confirms in a 
 
 Root folder: `LEARNING_NOTES_ROOT`, default `~/.learning/`.
 Repo folder: the name of the git root folder, or `general` when there is no repo.
-Topic files: every `*.md` in that folder, not `settings.md`, and not in `backups/` or `log/`.
+Topic files: every `*.md` in that folder, not `settings.md`, not `*.review.md`, and not in `backups/` or `log/`.
+Review sheet: `<topic>.review.md` next to the graph, when it exists. It moves with the graph.
 Log files: every `*.md` in `log/` whose `topic:` line matches the topic heading, compared in lowercase.
 
 If the folder has no topic files, say "No learning notes for this repo" and stop.
@@ -47,7 +48,7 @@ On Reset topic:
 
 1. `mkdir -p` the backups folder.
 2. If the backup name already exists, add seconds to the stamp. Never overwrite a backup.
-3. `mv` the topic file to the backup path. For all topics, move each file in turn with the shared stamp.
+3. `mv` the topic file to the backup path. Move `<topic>.review.md` the same way, with the same stamp. For all topics, move each file in turn with the shared stamp.
 4. `mkdir -p` `backups/log/`, then `mv` each matching log file there, keeping its name. If the name exists, add the stamp.
 5. Show the backup paths, graph and logs. Say "Say teach me <topic> to start over".
 
