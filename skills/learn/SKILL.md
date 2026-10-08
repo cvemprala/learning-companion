@@ -47,6 +47,7 @@ Five phrases are about work, not a lesson. They route here through the descripti
 Before the picker, find the topic's file. Look in the repo folder under the notes root.
 Match by the `# <topic>` heading first, then by file name. Compare in lowercase, ignoring punctuation and the words "how", "in", "the", "work", "works".
 Skip files ending in `.review.md`. Those are review sheets, not graphs.
+Skip the `backups/` and `log/` folders. A file in `backups/` is a topic the learner reset. Never offer it and never copy it back.
 So "teach me how closures in Go work" matches a file headed `# closures in go`. One topic, one file. Never create a second file for a heading that already exists.
 
 Then ask one AskUserQuestion with 3 options. Then stop. The next phase starts on the turn after the pick.
@@ -244,6 +245,7 @@ If they cannot, re-explain with a more concrete example. Do not shorten. Do not 
 | Derived node, every parent held | Your turn first. One try, then the answer. |
 | Every probe answer is right | The floor is set and no ceiling. Jump difficulty up sharply. |
 | Learner says "map" during the probe | Stop probing. Give the last grade. Build the map from the deepest root. Unprobed means unknown. |
+| Topic file found only in `backups/` | Treat as no file. The learner reset it. Offer Full or Quick. |
 | Choosing Probe 1 | Test the deepest root of the topic. Never the goal. |
 | Session restarted with Pending open | Ask the Pending question again. Do not assume an answer. |
 
