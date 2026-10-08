@@ -120,8 +120,14 @@ In every other phase, dispatch the researcher when unsure of any fact, before st
 
 ## Map
 
-Draft a dependency map of at most 7 nodes with labels of 5 words or fewer. Roots, the nodes at the top with no parent, are footholds.
+Draft a dependency map with labels of 5 words or fewer. Roots, the nodes at the top with no parent, are footholds.
 The sink, the one node at the bottom, is the learner's goal.
+
+The map has no size cap. Two rules decide its size instead.
+Complete: every node the goal needs is on the map. Cut nothing to fit a number.
+Compressed: before you show the map, try to merge any two nodes into one idea. Stop when no two nodes merge.
+State the size out loud in the approach: the node count and the time, for example "14 nodes, about 3 sessions".
+Above 10 nodes, group the nodes by layer, roots first and the goal last. The picture shows the layers. The chat list shows one layer per block.
 
 Show the map two ways. First, publish a picture. Mermaid is a text format that a renderer draws as boxes and arrows. Write one small HTML page holding one mermaid block, using the page shape and theme in `pictures.md` next to this file.
 Use the Artifact tool and follow its own rules. Give the learner the link. Second, in chat, show the same map as an indented list: roots at the left edge, each child indented under its parent.
@@ -235,6 +241,7 @@ If they cannot, re-explain with a more concrete example. Do not shorten. Do not 
 - Starting the probe at the goal. Three misses in a row that all come from one missing root is six questions spent finding one fact.
 - Asking the next probe without the grade line for the last one. The learner never hears why they were wrong.
 - Showing the map only as a raw mermaid block. The terminal cannot draw it, so the learner sees code, not a map.
+- Cutting nodes to fit a number. A map that hides a node the goal needs teaches a gap. Merge ideas instead.
 - Writing quiz options where the right one is longer or carries its reason.
 - Adding extra material the learner did not ask for. Flags, habits, comparisons. That is going past the edge.
 - Starting with exceptions and nuance before the solid base exists.

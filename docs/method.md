@@ -58,7 +58,8 @@ source is saved on the node. A wrong foothold would break every node above it.
 
 ### Step 4. Draw the map before teaching
 
-Claude drafts a small dependency map of at most 7 nodes. The footholds sit at the roots.
+Claude drafts a dependency map. It holds every node the goal needs, and merges any two
+nodes that are one idea. The footholds sit at the roots.
 Your goal sits at the bottom. Each node in between hangs off the nodes it depends on. The
 map is drawn as a picture in your browser, and shown as an indented list in chat. Claude checks that
 each root is a real root and not a result that itself needs explaining. Then it shows

@@ -11,7 +11,7 @@ Each lesson draws the map, and then at most 2 more pictures. Each one needs a re
 Rules for the drawing:
 
 - Show the mechanism, not its name. A box that says "closure" says nothing. The arrow from the inner func to the outer variable says it.
-- At most 7 elements. If the brief lists more, cut until it fits.
+- At most 7 elements in a picture that is not the map. If the brief lists more, cut until it fits. The map follows its own size rules in SKILL.md.
 - Label every arrow with what moves or why: `calls`, `points at`, `returns`.
 - One figure, one claim. The caption under it states the claim in one sentence.
 - Mark unknowns with `?`. Never draw a relationship the learner has not agreed to.
