@@ -5,6 +5,9 @@ The pending check fires only on the compact source. Opening Claude Code in a
 folder is not a promise to learn, so startup, resume, and clear stay silent.
 Compaction happens inside a long chat, so if a lesson has an open question
 then, the learner is mid lesson and the question would be lost without this.
+Only topics this chat wrote count. The hook reads the transcript and keeps
+the graph files that a Write or Edit call in this chat touched. A pending
+question in a file another chat left behind is not this chat's question.
 The mode check fires on every source. It reads one line of the per repo
 settings file and nothing else. The learner turned the mode on, so saying so
 at startup keeps that promise.
@@ -64,11 +67,38 @@ def pending_of(path):
     }
 
 
-def find_pending(folder):
-    if not folder.is_dir():
+def files_written(transcript, folder):
+    """Graph files under folder that a Write or Edit call in this chat touched."""
+    found = set()
+    try:
+        with open(transcript, encoding="utf-8") as stream:
+            for line in stream:
+                try:
+                    row = json.loads(line)
+                except ValueError:
+                    continue
+                if not isinstance(row, dict) or row.get("type") != "assistant":
+                    continue
+                content = row.get("message", {}).get("content")
+                for block in content if isinstance(content, list) else []:
+                    if block.get("type") != "tool_use" or block.get("name") not in ("Write", "Edit"):
+                        continue
+                    raw = (block.get("input") or {}).get("file_path")
+                    if not raw:
+                        continue
+                    path = Path(raw).expanduser()
+                    if path.parent == folder and path.suffix == ".md" and not path.name.endswith(".review.md") and path.name != "settings.md":
+                        found.add(path)
+    except (OSError, UnicodeError):
+        return set()
+    return found
+
+
+def find_pending(folder, transcript):
+    if not folder.is_dir() or not transcript or not Path(transcript).is_file():
         return []
     found = []
-    for path in sorted(folder.glob("*.md")):
+    for path in sorted(files_written(transcript, folder)):
         item = pending_of(path)
         if item:
             found.append(item)
@@ -124,7 +154,7 @@ def run(payload):
     folder = notes_root() / repo_folder(cwd)
     parts = []
     if payload.get("source") == "compact":
-        items = find_pending(folder)
+        items = find_pending(folder, payload.get("transcript_path"))
         if items:
             parts.append(context_for(items))
     if mode_on(folder):
