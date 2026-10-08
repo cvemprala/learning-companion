@@ -121,6 +121,9 @@ Write what it found on the node as `Source: <link or name>`. If it could not con
 Never write `Source: unconfirmed` on a definition. A definition was not sent to the researcher, so there is nothing to confirm.
 If it contradicts the draft, fix the foothold before the map is shown.
 For a fact about the current repo, the source is the file and line. Read it. Do not search the web.
+Send all researcher calls in one turn. While they run, build the picture and the chat list of the map.
+A result that arrives while others still run gets no message to the learner. "Three of four checks done, waiting on the last" is noise. Say nothing.
+When the last result arrives, write the graph, publish the picture, and show the map, all in one message.
 In every other phase, dispatch the researcher when unsure of any fact, before stating it.
 
 ## Map
