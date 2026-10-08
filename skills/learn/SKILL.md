@@ -54,7 +54,7 @@ When a file was found, say so in the question text and name its weakest mark, so
 If the learner said "resume <topic>" and a file exists, skip the picker and go straight to Resume.
 
 - Full lesson: probe, map, teach, test, save. If a file exists, Full adds to it. It does not start a second file.
-- Quick: 3 footholds and one derivation. No probe, no graph write.
+- Quick: for a learner who already holds the basics. 3 footholds, one line each. One derivation, try first. No probe, no graph write.
 - Resume: read the graph file for this topic. Skip nodes marked Strong. Start at the weakest node: Revisit first, then Developing, then Not yet asked.
 
 On Resume, if the file has a `## Pending` section, which records an open question, ask that question again.
@@ -147,12 +147,18 @@ Wait for the go ahead. Do not teach before approval. If the learner changes the 
 Per node, in this order: motivate, establish, connect, check.
 
 1. Motivate. One sentence on what problem forces this node now.
-2. Establish. For a foothold, state a strict definition or an all or none statement. Never "usually". For a derived node, ask the learner to try first: how would they get here from the footholds? Wait.
+2. Establish. For a foothold, state a strict definition or an all or none statement. Never "usually".
+   For a derived node, look at its parents first. A parent is **held** when the learner passed its Check this session, or the file marks it Strong or Developing.
+   Every parent held: ask the learner to try first. How would they get here from the parents? One try. Wait. Then state the answer, right or wrong. No second try.
+   Any parent not held: show the step first, with real values. Then give the same step again with one part blank, and ask the learner to fill the blank.
+   Example: 23 times 4 rests on the times table and carrying. The learner passed both Checks, so they try 23 times 4 first. A learner who failed the carrying Check is shown 23 times 4 worked, then asked for 31 times 4 with the carry left blank.
+   A learner who said "I don't know" to every probe holds no parent at the start. The roots are shown. Each Check they pass makes one more parent held, so the tries start one layer up.
    If the node has a `Probe:` line marked wrong, reopen that exact question here. Their wrong answer is the gap to close.
 3. Connect. When they answer, grade it. Then state the edge: why this node follows from its parent.
 4. Check. Ask the learner to use the node once.
 
 Escape hatch: "skip" or "just tell me" teaches the step directly. Try first resumes on the next step.
+At the first Your turn of a session, add one line: "Say skip at any time and I will show the step." Say it once, not on every node.
 
 Compression check. After 3 to 5 new facts, stop. Ask which single idea produces them all.
 The **click** is the moment a pile of facts collapses into one or two producing ideas.
@@ -233,6 +239,8 @@ If they cannot, re-explain with a more concrete example. Do not shorten. Do not 
 | Learner forgot a detail | Have them rebuild it from nearby facts. Do not restate it. |
 | Learner answers before you teach | Record it as known. Skip the explanation, not the next step. |
 | Learner says "skip" or "just tell me" | Teach the step directly. Try first resumes on the next step. |
+| Derived node, a parent not held | Show the step worked with real values. Then the same step with one blank for the learner. |
+| Derived node, every parent held | Your turn first. One try, then the answer. |
 | Every probe answer is right | The floor is set and no ceiling. Jump difficulty up sharply. |
 | Learner says "map" during the probe | Stop probing. Give the last grade. Build the map from the deepest root. Unprobed means unknown. |
 | Choosing Probe 1 | Test the deepest root of the topic. Never the goal. |
@@ -242,7 +250,9 @@ If they cannot, re-explain with a more concrete example. Do not shorten. Do not 
 
 - Stating a result inside the chain with no reason. "Each copy gets a new ID" with no "because the parent changed" leaves every later rule hanging on a lonely fact.
 - Testing a fact that was already said. Memorization passes that test.
-- Telling, then quizzing. The learner must try before being told.
+- Telling a step whose parts the learner already holds. They must try it first.
+- Asking the learner to try a step whose parts they have not seen. That is a blind guess, not learning. Show the step first, then a copy with one blank.
+- Giving a second try after a wrong try. One try, then the answer. Guessing twice teaches nothing.
 - Teaching before the map is approved. A wrong root is cheap to fix now and expensive mid lesson.
 - Stopping the probe at the first wrong answer. One miss is a point, not an edge.
 - Starting the probe at the goal. Three misses in a row that all come from one missing root is six questions spent finding one fact.
