@@ -68,6 +68,7 @@ Extend: draft 2 to 4 harder nodes above the goal, probe them, and teach the gaps
 ## Probe
 
 Every probe is one AskUserQuestion with this exact shape. Fill it in. Do not change the shape.
+The shape below is for you. Never show it or talk about it to the learner. "Probe 1 has no grade line" is a note to yourself, not a message.
 
 ```
 header:   Probe 5
@@ -220,6 +221,7 @@ The question must be answerable from the footholds and must not contain the fact
 
 Head each Teach block with a fixed label so the learner's eye finds the shape fast.
 Use exactly these four: **Foothold**, **Edge**, **Your turn**, **Click**.
+Motivate has no label. It is the first sentence of the block, before the Foothold label. Every Teach block has an Edge block, even for a root.
 The Test question is a Your turn block with one sentence before it saying this is the test.
 **Edge** holds a reason, never a scene. **Your turn** holds exactly one question mark.
 Feedback is factual. No praise, no hype, no belittling. Say what was right, what was missing, and why.

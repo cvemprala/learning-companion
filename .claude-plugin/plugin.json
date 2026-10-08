@@ -1,6 +1,6 @@
 {
   "name": "learning-companion",
-  "version": "0.1.27",
+  "version": "0.1.28",
   "description": "Teaches a hard topic one node at a time and saves a graph of what you understand.",
   "author": {
     "name": "Chaitanya Vemprala"
