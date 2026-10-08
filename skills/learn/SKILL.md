@@ -142,6 +142,9 @@ Write every node to the graph. A node a probe touched gets a `Probe:` line and a
 Right gives Developing. Wrong gives Revisit. A node no probe touched gets Not yet asked.
 The `Probe:` line holds the probe number, right or wrong, what the learner said, and the correct answer.
 Then show the map and the approach in 3 to 5 sentences.
+When the probe bracketed nothing, because the learner said "map" or missed every strand, the roots are a guess. List the facts the roots assume, one line each, under the heading "Assumed under the roots".
+Example: a Go scheduler map with the root "blocking syscall parks thread" assumes a thread, the kernel scheduler, a syscall, and a file descriptor.
+Then ask one AskUserQuestion with 2 options: approve the map, or add the assumed facts as a Layer 0 under the roots. The roots are Layer 1, so Layer 0 is a new layer. On the second, add the nodes and start Teach there.
 Wait for the go ahead. Do not teach before approval. If the learner changes the map, rewrite the nodes.
 
 ## Teach
@@ -245,6 +248,7 @@ If they cannot, re-explain with a more concrete example. Do not shorten. Do not 
 | Derived node, every parent held | Your turn first. One try, then the answer. |
 | Every probe answer is right | The floor is set and no ceiling. Jump difficulty up sharply. |
 | Learner says "map" during the probe | Stop probing. Give the last grade. Build the map from the deepest root. Unprobed means unknown. |
+| Map after a probe that bracketed nothing | List the facts the roots assume. Offer to add them as Layer 0. |
 | Topic file found only in `backups/` | Treat as no file. The learner reset it. Offer Full or Quick. |
 | Choosing Probe 1 | Test the deepest root of the topic. Never the goal. |
 | Session restarted with Pending open | Ask the Pending question again. Do not assume an answer. |
