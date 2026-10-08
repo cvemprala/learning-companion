@@ -40,7 +40,7 @@ Use mermaid, a text format that the viewer draws as boxes and arrows, for flows,
 <style>
   /* Layout: one figure, caption below, 65 character measure. */
   :root {
-    --bg: #faf9f6; --ink: #1f2a30; --muted: #6b7a82; --accent: #0b6e8f;
+    --bg: #ffffff; --ink: #1f2a30; --muted: #6b7a82; --accent: #0b6e8f;
     --font: ui-sans-serif, system-ui, sans-serif;
   }
   @media (prefers-color-scheme: dark) {
@@ -68,6 +68,41 @@ graph TD
   <figcaption>The inner func points at the one n that make created, so every call changes the same n.</figcaption>
 </figure>
 ```
+
+## Map page
+
+The map uses the same page with 3 additions. The background is white. A bar above the drawing has 3 buttons, minus, plus, and reset, that scale the drawing from 30 to 300 percent. The drawing sits in a scroll box with a border.
+Above 10 nodes, each layer is a mermaid subgraph named `Layer 1, roots` to `Layer N, goal`, so the picture shows the layers as boxes.
+
+```html
+<div class="bar">
+  <button id="out" type="button">minus</button>
+  <button id="in" type="button">plus</button>
+  <button id="reset" type="button">reset</button>
+  <span id="pct">100%</span>
+</div>
+<div class="box"><div class="zoom" id="zoom">
+  <pre class="mermaid">
+graph TD
+  subgraph L1[Layer 1, roots]
+    A[first root]
+  end
+  subgraph L2[Layer 2, goal]
+    B[goal]
+  end
+  A -->|why| B
+  </pre>
+</div></div>
+<script>
+  var s = 1, z = document.getElementById('zoom'), p = document.getElementById('pct');
+  function apply(){ z.style.transform = 'scale(' + s + ')'; p.textContent = Math.round(s*100) + '%'; }
+  document.getElementById('in').onclick = function(){ s = Math.min(3, s + 0.2); apply(); };
+  document.getElementById('out').onclick = function(){ s = Math.max(0.3, s - 0.2); apply(); };
+  document.getElementById('reset').onclick = function(){ s = 1; apply(); };
+</script>
+```
+
+Styles for the bar and the box: `.bar` is a flex row with an 8 pixel gap. `.box` has `overflow: auto`, a 1 pixel border in `--line`, and `max-height: 80vh`. `.zoom` has `transform-origin: top left` and `display: inline-block`.
 
 For a dark theme, swap the two color sets. Dark values go on the bare `:root` with `color-scheme: dark`. Light values go in the two override blocks without it.
 Keep the `<title>` to 2 to 4 words that name the picture. Put the one sentence claim in the publish description.
