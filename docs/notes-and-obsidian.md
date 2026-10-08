@@ -29,3 +29,16 @@ repo, named by the git root folder, and `general/` for topics with no repo.
 
 Marks mean this. Strong: you derived a fact that was never said. Developing: you recalled it in a
 probe or followed the edge. Revisit: you missed it. Not yet asked: untaught.
+
+## If notes cannot be written
+
+Some setups run Claude in a sandbox that blocks writes outside the project folder. Then the
+graph file cannot be saved. Claude says the path and the error, and the lesson goes on
+without saving. Two fixes. Set `LEARNING_NOTES_ROOT` to a folder Claude can write, for
+example a folder inside the project that your `.gitignore` skips. Or add `~/.learning` to
+`sandbox.filesystem.allowWrite` in your Claude Code settings.
+
+If Claude Code itself runs in a container, such as a dev container or Codespaces, the
+writes succeed but the container's home folder vanishes when it is rebuilt. Claude warns
+once per session when it sees a container. The fix is the same: set `LEARNING_NOTES_ROOT`
+to a folder mounted from your machine.

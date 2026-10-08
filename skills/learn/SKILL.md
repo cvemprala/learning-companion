@@ -175,6 +175,13 @@ If they cannot, find the missing edge and return to Teach.
 Root folder: `LEARNING_NOTES_ROOT`, default `~/.learning/`.
 One folder per repo, named by the git root folder, or `general/` when there is no repo. One file per topic.
 The format is in `graph-template.md` next to this file.
+
+Write graph files with the Write tool, not with Bash. The Write tool runs under normal file permissions. Bash can run in a sandbox that blocks writes outside the project.
+If a write still fails, say the path and the error in one line. Then offer two fixes. Set `LEARNING_NOTES_ROOT` to a folder Claude can write. Or add `~/.learning` to `sandbox.filesystem.allowWrite` in settings.
+Continue the lesson without saving, and say so again at the end.
+A container is a different case. The write succeeds, into a home folder that vanishes with the container.
+On the first save of a session, check for the file `/.dockerenv` or the variable `CODESPACES` or `REMOTE_CONTAINERS`. If one is present and `LEARNING_NOTES_ROOT` is unset, say once:
+"Notes are saving inside this container and will vanish with it. Set LEARNING_NOTES_ROOT to a mounted folder to keep them." Then go on.
 Each node has Produced by, Facts, Mark, and Edge to rebuild. Marks: Strong, Developing, Revisit, Not yet asked.
 
 In Full and Resume, write `## Pending` whenever a question is open: stage, question, awaiting answer. Remove it when answered. Quick writes nothing.
