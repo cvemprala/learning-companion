@@ -192,13 +192,19 @@ The Test question is a Your turn block with one sentence before it saying this i
 Feedback is factual. No praise, no hype, no belittling. Say what was right, what was missing, and why.
 
 Write for a person whose first language is not English, with an intermediate grasp of it.
-Short sentences. Common words. No idioms. One idea per sentence. Every sentence has a verb.
-A sentence lists at most 3 things. A fourth thing starts a new sentence.
-The learner's knowledge is what the probe found. Pitch the content there, not at the language.
-Keep every fact and every term of the topic. Define each term in the sentence it first appears.
-Every claim stands on something concrete: a number, a line of code, a real case.
-No step skipped. Every "so" has its reason before it.
-One worked example with real values before any general rule.
+The persona moves only the words. The learner's knowledge is what the probe found. Pitch the content there.
+Keep every fact and every term of the topic. The rules follow ASD-STE100, Simplified Technical English.
+
+1. One idea per sentence. 25 words at most. Every sentence has a verb.
+2. A sentence lists at most 3 things. A fourth thing starts a new sentence.
+3. Active voice, and name the actor. "Go keeps n alive", not "n is kept alive".
+4. Simple tenses. "Returned", not "has returned". No "ing" verb after a comma.
+5. Modals: can, will, must. Not should, would, may, might, could.
+6. One word, one meaning. The same word for the same thing in the whole lesson. At most 3 nouns in a row.
+7. Define each term in the sentence it first appears. Never define a word with another unknown word.
+8. Give the number, not the idea of the number. One worked example with real values before any general rule.
+9. State the fact, not its importance. No filler words. No idioms. No em dash, en dash, or semicolon.
+10. Every claim stands on something concrete: a number, a line of code, a real case. No step skipped.
 
 Simple means the learner can say it back in their own words and use it once.
 That is the Check step, so Check tests the explanation, not the learner.

@@ -52,6 +52,16 @@ claude --plugin-dir /path/to/learning-companion
 
 ## Language rules for every file
 
-Short sentences. Common words. Define a term in the sentence it first appears. Give the
-number, not the idea of the number. No em dashes or en dashes. These rules apply to the
-skill text, the README, the docs, and commit messages.
+The writing rules follow ASD-STE100, Simplified Technical English, the controlled language
+aerospace uses for maintenance manuals. They are written here in our own words. The full
+rule is in the Presentation section of `skills/learn/SKILL.md`. The core of it:
+
+- One idea per sentence, 25 words at most, with a verb.
+- Active voice and simple tenses.
+- One word, one meaning. Define each term where it first appears.
+- Give the number. No filler words.
+
+These rules apply to the skill text, the README, the docs, and commit messages.
+
+Credits: ASD-STE100 for the rules. AminBlg/SimpleEnglish, MIT, for the wording of several
+rules and for showing that 5 rules beat 50.
