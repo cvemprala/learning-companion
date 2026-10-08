@@ -54,6 +54,7 @@ When a file was found, say so in the question text and name its weakest mark, so
 If the learner said "resume <topic>" and a file exists, skip the picker and go straight to Resume.
 
 - Full lesson: probe, map, teach, test, save. If a file exists, Full adds to it. It does not start a second file.
+  The option text the learner sees must say: "Type map during the probe to skip it and start from the basics."
 - Quick: for a learner who already holds the basics. 3 footholds, one line each. One derivation, try first. No probe, no graph write.
 - Resume: read the graph file for this topic. Skip nodes marked Strong. Start at the weakest node: Revisit first, then Developing, then Not yet asked.
 
