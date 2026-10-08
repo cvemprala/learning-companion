@@ -113,9 +113,12 @@ When the probe ends, give the last grade in chat before the map.
 ## Facts
 
 Every foothold gets checked before it is taught. A wrong foothold breaks every node above it.
-When the map's roots are set, dispatch the researcher once per root, before writing the graph.
+A definition needs no researcher. "A thread is one stream of instructions with its own stack" is a definition. Write `Source: definition` on that node.
+A claim with a number, a name, a date, a version, or a rule gets the researcher. "A goroutine starts with a 2 KB stack" is a claim.
+When the map's roots are set, dispatch the researcher once per root that is a claim, before writing the graph.
 Use the Agent tool with `subagent_type: learning-companion:researcher`, one claim per call. 2 to 4 calls per lesson.
 Write what it found on the node as `Source: <link or name>`. If it could not confirm, write `Source: unconfirmed` and say so in the Foothold block.
+Never write `Source: unconfirmed` on a definition. A definition was not sent to the researcher, so there is nothing to confirm.
 If it contradicts the draft, fix the foothold before the map is shown.
 For a fact about the current repo, the source is the file and line. Read it. Do not search the web.
 In every other phase, dispatch the researcher when unsure of any fact, before stating it.
