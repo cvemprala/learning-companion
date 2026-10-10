@@ -25,6 +25,7 @@ from pathlib import Path
 PLUGIN_ROOT = Path(__file__).resolve().parents[1]
 MAX_TOPICS = 5
 MODE_LINE = re.compile(r"Mode:\s*teach as we go\s*", re.IGNORECASE)
+WRITER_LINE = re.compile(r"Writer:\s*(learner|claude)\s*", re.IGNORECASE)
 
 
 def notes_root():
@@ -126,20 +127,34 @@ def context_for(items):
 
 
 def mode_on(folder):
+    """None when off. Otherwise the writer, "learner" or "claude"."""
     path = folder / "settings.md"
     if path.is_symlink() or not path.is_file():
-        return False
+        return None
     try:
         lines = path.read_text(encoding="utf-8").splitlines()
     except (OSError, UnicodeError):
-        return False
-    return any(MODE_LINE.fullmatch(line) for line in lines)
+        return None
+    if not any(MODE_LINE.fullmatch(line) for line in lines):
+        return None
+    for line in lines:
+        match = WRITER_LINE.fullmatch(line)
+        if match:
+            return match.group(1).lower()
+    return "claude"
 
 
-def mode_context(folder):
+def mode_context(folder, writer):
+    who = (
+        "The learner writes the code. Before each step, give one Teach block: Foothold, Edge, Your turn. "
+        "Then stop. Never write a step you gave to the learner."
+        if writer == "learner"
+        else "Claude writes the code."
+    )
     return "\n".join([
         "Learning Companion: teach as we go is on for this repo. The learner asked for this.",
         f"Before you change any code, use Read on {PLUGIN_ROOT / 'skills/learn/teach-as-we-go.md'} and follow it.",
+        f"Writer: {writer}. {who}",
         f"Graph file: {folder / 'codebase.md'}. A folder is met when that file has a `## <folder>` heading. "
         "Nothing else counts.",
         "The one rule: before a change of 5 lines or more in a folder that is not met, ask one Predict question. "
@@ -157,8 +172,9 @@ def run(payload):
         items = find_pending(folder, payload.get("transcript_path"))
         if items:
             parts.append(context_for(items))
-    if mode_on(folder):
-        parts.append(mode_context(folder))
+    writer = mode_on(folder)
+    if writer:
+        parts.append(mode_context(folder, writer))
     if not parts:
         return None
     return {"hookSpecificOutput": {"hookEventName": "SessionStart", "additionalContext": "\n\n".join(parts)}}

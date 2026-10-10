@@ -28,6 +28,7 @@ Mark: Strong (2026-10-05)
 """
 
 MODE_ON = "# web-api settings\nMode: teach as we go\n"
+MODE_ON_LEARNER = MODE_ON + "Writer: learner\n"
 MODE_OFF = "# web-api settings\nTheme: dark\n"
 
 
@@ -164,6 +165,22 @@ class SessionStartTest(unittest.TestCase):
         self.assertIn("5 lines", ctx)
         self.assertIn("## <folder>", ctx)
         self.assertNotIn("compacted", ctx)
+
+    def test_mode_on_without_writer_means_claude(self):
+        (self.folder / "settings.md").write_text(MODE_ON)
+        ctx = self.context(self.run_hook(source="startup"))
+        self.assertIn("Writer: claude.", ctx)
+        self.assertNotIn("Never write a step", ctx)
+
+    def test_mode_on_with_learner_writer(self):
+        (self.folder / "settings.md").write_text(MODE_ON_LEARNER)
+        ctx = self.context(self.run_hook(source="startup"))
+        self.assertIn("Writer: learner.", ctx)
+        self.assertIn("Never write a step you gave to the learner", ctx)
+
+    def test_writer_line_alone_is_silent(self):
+        (self.folder / "settings.md").write_text("# web-api settings\nWriter: learner\n")
+        self.assertIsNone(self.run_hook(source="startup"))
 
     def test_mode_on_every_source(self):
         (self.folder / "settings.md").write_text(MODE_ON)

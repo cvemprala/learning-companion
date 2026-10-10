@@ -108,12 +108,15 @@ Missing file means light. Only write it when the learner changes a setting.
 
 ## Per repo settings file
 
-`<root>/<repo>/settings.md` holds settings for one repo. Today there is one.
+`<root>/<repo>/settings.md` holds settings for one repo. Today there are two.
 
 ```
 # web-api settings
 Mode: teach as we go
+Writer: learner
 ```
+
+`Writer` is `learner` or `claude`. It says who writes the code while the mode is on. No line means claude.
 
 Missing file or missing line means the mode is off. The rules are in `teach-as-we-go.md`.
 

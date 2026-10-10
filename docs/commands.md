@@ -9,7 +9,8 @@ What you type, and what happens.
 | `resume <topic>` | Skips the picker and continues the saved topic from its weakest node. |
 | `review notes for <topic>` | Writes or refreshes the topic's review sheet. One folded question per node, answer under it. |
 | `/learning-companion:reset` | Moves one topic's notes and its lesson logs, or all topics in the repo, into a backups folder after you confirm. Nothing is deleted. |
-| `teach as we go` | Turns on one Predict question per new folder before Claude changes code there, for this repo. |
+| `teach as we go` | Turns the mode on for this repo. Asks once who writes the code, you or Claude. Then one Predict question per new folder. |
+| `just write it` | While you are the writer, hands one step back to Claude. |
 | `stop teaching as we go` | Turns that off for this repo. |
 | `mark this` | Saves one node for the code Claude just explained. No question. Works in any repo. |
 | `teach me what I marked this week` | Runs a lesson on the codebase nodes from the last 7 days. |

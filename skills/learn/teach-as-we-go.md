@@ -3,7 +3,19 @@
 ## Mode line
 
 On when `<root>/<repo>/settings.md` has `Mode: teach as we go` under `# <repo> settings`.
-"Stop teaching as we go" removes the line. Delete the file if only the heading is left.
+The line under it, `Writer: learner` or `Writer: claude`, says who writes the code. No Writer line means claude.
+"Stop teaching as we go" removes both lines. Delete the file if only the heading is left.
+
+## Who writes
+
+`Writer: claude`: Claude writes the code. The Predict question below comes before the first change in each unmet folder. Then the grade, the node, and the work.
+
+`Writer: learner`: the learner writes the code. The Predict question, grade, and node stay the same. Then, in place of the work, Claude gives one Teach block for the step the learner will write.
+The block has three labels. **Foothold**: the one fact the step rests on, with real values from this code. **Edge**: why the step must look the way it does. **Your turn**: the step, in one sentence, with the file and the place in it. Say what the step must do, not the lines to type. Then stop and wait.
+Example: "In hello_test.go, below BenchmarkDirect, write BenchmarkInterface so that it calls Process through a Processor value the compiler cannot see into."
+Claude never writes a step it gave to the learner. Not when the learner says "teach me as we go" again. That phrase means "teach me", not "write it".
+"Just write it" or "skip" means Claude writes that one step. The next step is the learner's again.
+When the learner's code is in, Claude reads it and says what is right and what is missing, in 2 or 3 sentences. No rewrite unless asked.
 
 ## Met
 
